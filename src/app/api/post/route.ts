@@ -3,17 +3,28 @@ import connectMongo from '@/lib/mongoose';
 import Post from '@/app/models/Post';
 import mongoose from 'mongoose';
 import { postSchema } from '@/app/schemas/post.schema';
+import redis from '@/lib/redis';
 
 // GET request for fetching all posts or a single post based on the query parameter
 export async function GET(req: NextRequest) {
     try {
-        await connectMongo(); // Reuse the connection logic
-
         const url = new URL(req.url);
         const postId = url.searchParams.get('id'); // Check if 'id' is provided
 
+        // Check Redis first for cache
         if (postId) {
-            // If 'id' is provided, fetch a single post by ID
+            // Try to get the cached post by ID
+            const cachedPost = await redis.get(`post:${postId}`);
+            if (cachedPost) {
+                // Return cached post if available
+                return NextResponse.json({
+                    message: 'Post fetched from cache',
+                    data: JSON.parse(cachedPost),
+                });
+            }
+
+            // If not found in cache, fetch from MongoDB
+            await connectMongo();
             const post = await Post.findById(postId);
 
             if (!post) {
@@ -23,13 +34,31 @@ export async function GET(req: NextRequest) {
                 );
             }
 
+            // Cache the fetched post in Redis for future requests
+            await redis.set(`post:${postId}`, JSON.stringify(post), 'EX', 3600); // Cache expires in 1 hour
+
             return NextResponse.json({
                 message: 'Post fetched successfully',
                 data: post,
             });
         } else {
-            // If no 'id' is provided, fetch all posts
+            // For fetching all posts, check Redis cache first
+            const cachedPosts = await redis.get('posts');
+            if (cachedPosts) {
+                // Return all posts from cache if available
+                return NextResponse.json({
+                    message: 'Posts fetched from cache',
+                    data: JSON.parse(cachedPosts),
+                });
+            }
+
+            // If not found in cache, fetch all posts from MongoDB
+            await connectMongo();
             const posts = await Post.find({});
+
+            // Cache the fetched posts in Redis for future requests
+            await redis.set('posts', JSON.stringify(posts), 'EX', 3600); // Cache expires in 1 hour
+
             return NextResponse.json({
                 message: 'MongoDB connected successfully',
                 data: posts,
@@ -86,6 +115,12 @@ export async function POST(req: NextRequest) {
 
         // Save the post
         const savedPost = await post.save();
+
+        // Invalidate the cache for all posts since a new one was added
+        await redis.del('posts'); // This removes the cached list of posts
+
+        // Optionally, you could also invalidate the cache for the individual post if you're caching it separately
+        await redis.del(`post:${savedPost._id}`); // Invalidate the cache for the newly created post if cached
 
         // Return success response
         return NextResponse.json({
@@ -149,6 +184,12 @@ export async function PUT(req: NextRequest) {
             );
         }
 
+        // Invalidate the cache for the updated post
+        await redis.del(`post:${postId}`); // Invalidate the cache for the specific post
+
+        // Optionally, invalidate the list of all posts if needed
+        await redis.del('posts'); // Invalidate the list of posts
+
         return NextResponse.json({
             message: 'Post updated successfully',
             data: updatedPost,
@@ -166,6 +207,7 @@ export async function PUT(req: NextRequest) {
         );
     }
 }
+
 
 // DELETE request to remove a post by ID
 
@@ -193,6 +235,12 @@ export async function DELETE(req: NextRequest) {
                 { status: 404 }
             );
         }
+
+        // Invalidate the cache for the deleted post
+        await redis.del(`post:${postId}`); // Invalidate the cache for the specific post
+
+        // Optionally, invalidate the list of all posts if needed
+        await redis.del('posts'); // Invalidate the list of posts
 
         return NextResponse.json({
             message: 'Post deleted successfully',
