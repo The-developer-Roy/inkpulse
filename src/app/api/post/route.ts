@@ -4,10 +4,27 @@ import Post from '@/app/models/Post';
 import mongoose from 'mongoose';
 import { postSchema } from '@/app/schemas/post.schema';
 import redis from '@/lib/redis';
+import { RateLimiter } from '@/lib/rateLimiter';
+
+const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
 // GET request for fetching all posts or a single post based on the query parameter
 export async function GET(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+
         const url = new URL(req.url);
         const postId = url.searchParams.get('id'); // Check if 'id' is provided
 
@@ -82,6 +99,20 @@ export async function GET(req: NextRequest) {
 // POST request for creating a new post
 export async function POST(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+
         await connectMongo(); // Ensure MongoDB connection
 
         // Parse the request body
@@ -144,6 +175,20 @@ export async function POST(req: NextRequest) {
 // PUT request to update a post by ID
 export async function PUT(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+        
         await connectMongo(); // Reuse the connection logic
 
         // Extract post ID from the query parameters
@@ -213,6 +258,20 @@ export async function PUT(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+
         await connectMongo(); // Reuse the connection logic
 
         // Extract post ID from the query parameters

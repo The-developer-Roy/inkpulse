@@ -1,10 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectMongo from '@/lib/mongoose';
 import Comment from '@/app/models/Comment';
+import { RateLimiter } from '@/lib/rateLimiter';
+
+const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
 // POST request for adding a new comment
 export async function POST(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+
         await connectMongo();
 
         const body = await req.json();
@@ -40,6 +57,20 @@ export async function POST(req: NextRequest) {
 // GET request for fetching all comments for a post.
 export async function GET(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+
         await connectMongo();
 
         // Extract postId from query params
@@ -83,6 +114,20 @@ export async function GET(req: NextRequest) {
 // DELETE request for deleting a comment
 export async function DELETE(req: NextRequest) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
+        
         await connectMongo();
 
         // Extract commentId from the query parameters

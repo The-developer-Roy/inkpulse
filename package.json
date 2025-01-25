@@ -15,8 +15,10 @@
     "mongoose": "^8.9.4",
     "next": "15.1.4",
     "next-auth": "^4.24.11",
+    "rate-limiter-flexible": "^5.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "winston": "^3.17.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {

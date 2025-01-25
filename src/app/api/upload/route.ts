@@ -1,8 +1,24 @@
 import { NextResponse } from 'next/server';
 import cloudinary from '@/lib/cloudinary';
+import { RateLimiter } from '@/lib/rateLimiter';
+
+const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
 export async function POST(req: Request) {
     try {
+        // Extracr the client IP address
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+
+        // Apply rate limiting
+        const rateLimitResult = await rateLimiter.applyLimit(ip);
+
+        // If rate limit exceeded, return an error response
+        if (!rateLimitResult.allowed) {
+            return NextResponse.json(
+                { message: rateLimitResult.error },
+                { status: 429 }
+            );
+        }
         const formData = await req.formData();
         const file = formData.get('file');
 
