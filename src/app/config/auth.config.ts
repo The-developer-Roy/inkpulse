@@ -1,10 +1,10 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
-import GitHubProvider from 'next-auth/providers/github';
 import User from '../models/User';
 import bcrypt from 'bcryptjs';
 import connectMongo from '@/lib/mongoose';
+import logger from '@/lib/logger';
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -28,6 +28,8 @@ const authOptions: NextAuthOptions = {
                     return { id: user._id.toString(), email: user.email, name: user.name };
                 }
 
+                logger.info("An user got authorized through crendentials");
+
                 return null;
             },
         }),
@@ -50,6 +52,8 @@ const authOptions: NextAuthOptions = {
                     return true; // Allow sign-in
                 }
 
+                logger.info("Authorized an user through google");
+
                 // Create new user if not found
                 const newUser = new User({
                     name: profile?.name, // GitHub uses 'login' instead of 'name'
@@ -58,6 +62,7 @@ const authOptions: NextAuthOptions = {
                 });
 
                 await newUser.save();
+                logger.info("Created a new user through google");
                 return true; // Allow sign-in after user creation
             }
 

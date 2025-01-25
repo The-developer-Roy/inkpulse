@@ -1,5 +1,6 @@
 import { RateLimiterRedis, RateLimiterRes } from 'rate-limiter-flexible';
 import redis from './redis'; // Reuse the Redis connection from redis.ts
+import logger from './logger';
 
 export class RateLimiter {
     private rateLimiterInstance: RateLimiterRedis;
@@ -15,6 +16,7 @@ export class RateLimiter {
 
     async applyLimit(key: string): Promise<{ allowed: boolean; error?: string }> {
         if (!key) {
+            logger.warn("The key was invalid");
             return { allowed: false, error: 'Invalid key for rate limiting.' };
         }
 
@@ -26,10 +28,12 @@ export class RateLimiter {
             if (error instanceof RateLimiterRes) {
                 // Rate limit exceeded
                 console.warn(`Rate limit exceeded for key: ${key}`);
+                logger.warn(`Rate limit exceeded for key: ${key}`);
                 return { allowed: false, error: 'Too many requests. Please try again later.' };
             }
 
             console.error(`Unexpected error during rate limiting for key: ${key}`, error);
+            logger.error(`Unexpected error during rate limiting for key: ${key}`);
             return { allowed: false, error: 'An error occurred while applying rate limiting.' };
         }
     }

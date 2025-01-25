@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import cloudinary from '@/lib/cloudinary';
 import { RateLimiter } from '@/lib/rateLimiter';
+import logger from '@/lib/logger';
 
 const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
 export async function POST(req: Request) {
     try {
+        logger.info('Received a POST request from the endpoint: "api/upload"');
         // Extracr the client IP address
         const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
@@ -35,6 +37,8 @@ export async function POST(req: Request) {
         const uploadResponse = await cloudinary.uploader.upload(dataUri, {
             folder: 'blog_uploads', // Optional: specify a folder
         });
+
+        logger.info("A file got uploaded to cloudinary.");
 
         return NextResponse.json({
             message: 'File uploaded successfully',

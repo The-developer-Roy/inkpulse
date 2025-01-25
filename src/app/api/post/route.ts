@@ -5,12 +5,14 @@ import mongoose from 'mongoose';
 import { postSchema } from '@/app/schemas/post.schema';
 import redis from '@/lib/redis';
 import { RateLimiter } from '@/lib/rateLimiter';
+import logger from '@/lib/logger';
 
 const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
 // GET request for fetching all posts or a single post based on the query parameter
 export async function GET(req: NextRequest) {
     try {
+        logger.info('Recieved a GET request from the endpoint: "api/post"');
         // Extracr the client IP address
         const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
@@ -44,6 +46,8 @@ export async function GET(req: NextRequest) {
             await connectMongo();
             const post = await Post.findById(postId);
 
+            logger.info("Post ID found in Database");
+
             if (!post) {
                 return NextResponse.json(
                     { message: 'Post not found' },
@@ -51,8 +55,12 @@ export async function GET(req: NextRequest) {
                 );
             }
 
+            logger.info("Post ID not found in database");
+
             // Cache the fetched post in Redis for future requests
             await redis.set(`post:${postId}`, JSON.stringify(post), 'EX', 3600); // Cache expires in 1 hour
+
+            logger.info("Post ID stored in redis");
 
             return NextResponse.json({
                 message: 'Post fetched successfully',
@@ -73,8 +81,12 @@ export async function GET(req: NextRequest) {
             await connectMongo();
             const posts = await Post.find({});
 
+            logger.info("Posts found in database");
+
             // Cache the fetched posts in Redis for future requests
             await redis.set('posts', JSON.stringify(posts), 'EX', 3600); // Cache expires in 1 hour
+
+            logger.info("Posts stored in redis");
 
             return NextResponse.json({
                 message: 'MongoDB connected successfully',
@@ -99,6 +111,8 @@ export async function GET(req: NextRequest) {
 // POST request for creating a new post
 export async function POST(req: NextRequest) {
     try {
+        logger.info('Received a POST request from the endpoint: "api/post"');
+
         // Extracr the client IP address
         const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
@@ -147,6 +161,8 @@ export async function POST(req: NextRequest) {
         // Save the post
         const savedPost = await post.save();
 
+        logger.info("Created a new post");
+
         // Invalidate the cache for all posts since a new one was added
         await redis.del('posts'); // This removes the cached list of posts
 
@@ -175,6 +191,8 @@ export async function POST(req: NextRequest) {
 // PUT request to update a post by ID
 export async function PUT(req: NextRequest) {
     try {
+        logger.info('Received a PUT request from the endpoint: "api/post"');
+
         // Extracr the client IP address
         const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
@@ -222,6 +240,8 @@ export async function PUT(req: NextRequest) {
             { new: true } // Return the updated post
         );
 
+        logger.info(`Post with ID: "${postId}" updated successfully`);
+
         if (!updatedPost) {
             return NextResponse.json(
                 { message: 'Post not found' },
@@ -258,6 +278,8 @@ export async function PUT(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
     try {
+        logger.info('Received a DELETE request from the endpoint: "api/post"');
+
         // Extracr the client IP address
         const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
 
@@ -287,6 +309,8 @@ export async function DELETE(req: NextRequest) {
 
         // Find and delete the post by ID
         const deletedPost = await Post.findByIdAndDelete(postId);
+
+        logger.info(`Post with ID: "${postId}" deleted successfully`);
 
         if (!deletedPost) {
             return NextResponse.json(

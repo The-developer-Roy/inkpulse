@@ -3,10 +3,13 @@ import connectMongo from '@/lib/mongoose';
 import User from '@/app/models/User';
 import bcrypt from 'bcryptjs';
 import { userCreateSchema, userUpdateSchema } from '@/app/schemas/user.schema';
+import logger from '@/lib/logger';
 
 // POST request for creating a new user
 export async function POST(req: NextRequest) {
     try {
+        logger.info('Received a POST request from the endpoint: "api/user"');
+
         await connectMongo(); // Reuse the connection logic
 
         // Parse the incoming request body
@@ -35,6 +38,8 @@ export async function POST(req: NextRequest) {
         });
 
         await newUser.save(); // Save the user to the database
+
+        logger.info("Created a new user successfully");
 
         // Return the newly created user (excluding the password)
         const userResponse = {
@@ -107,6 +112,8 @@ export async function GET(req: NextRequest) {
 // PUT request for updating user details
 export async function PUT(req: NextRequest) {
     try {
+        logger.info('Received a PUT request from the endpoint: "api/user"');
+
         await connectMongo(); // Connect to MongoDB
 
         const body = await req.json(); // Parse request body
@@ -135,6 +142,8 @@ export async function PUT(req: NextRequest) {
             { $set: updates }, // Update fields
             { new: true, runValidators: true } // Return the updated user and validate schema
         );
+
+        logger.info(`User with email: ${email} updated successfully`);
 
         if (!updatedUser) {
             return NextResponse.json(
@@ -167,6 +176,8 @@ export async function PUT(req: NextRequest) {
 // DELETE request for deleting an user
 export async function DELETE(req: NextRequest) {
     try {
+        logger.info('Received a DELETE request from the endpoint: "api/user"');
+
         await connectMongo(); // Connect to MongoDB
 
         const { email } = await req.json(); // Parse request body
@@ -181,6 +192,8 @@ export async function DELETE(req: NextRequest) {
 
         // Delete the user
         const deletedUser = await User.findOneAndDelete({ email });
+
+        logger.info(`User with email: ${email} deleted successfully`);
 
         if (!deletedUser) {
             return NextResponse.json(

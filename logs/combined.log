@@ -1,0 +1,4 @@
+{"level":"info","message":"Connected to Redis","timestamp":"2025-01-25 14:34:06"}
+{"level":"info","message":"Recieved a GET request from the endpoint: \"api/post\"","timestamp":"2025-01-25 14:34:06"}
+{"level":"info","message":"Posts found in database","timestamp":"2025-01-25 14:34:08"}
+{"level":"info","message":"Posts stored in redis","timestamp":"2025-01-25 14:34:08"}
