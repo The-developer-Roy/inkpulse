@@ -6,6 +6,7 @@ import { postSchema } from '@/app/schemas/post.schema';
 import redis from '@/lib/redis';
 import { RateLimiter } from '@/lib/rateLimiter';
 import logger from '@/lib/logger';
+import * as Sentry from '@sentry/react'
 
 const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
@@ -95,6 +96,7 @@ export async function GET(req: NextRequest) {
         }
 
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'MongoDB connection failed', error: error.message },
@@ -175,6 +177,7 @@ export async function POST(req: NextRequest) {
             data: savedPost,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to create post', error: error.message },
@@ -260,6 +263,7 @@ export async function PUT(req: NextRequest) {
             data: updatedPost,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to update post', error: error.message },
@@ -330,6 +334,7 @@ export async function DELETE(req: NextRequest) {
             data: deletedPost,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to delete post', error: error.message },

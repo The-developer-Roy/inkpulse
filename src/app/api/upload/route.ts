@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import cloudinary from '@/lib/cloudinary';
 import { RateLimiter } from '@/lib/rateLimiter';
 import logger from '@/lib/logger';
+import * as Sentry from '@sentry/react'
 
 const rateLimiter = new RateLimiter(5, 30); // Allow 5 requsts every 30 seconds
 
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
             data: uploadResponse,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to upload file', error: error.message },

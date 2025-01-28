@@ -4,6 +4,7 @@ import User from '@/app/models/User';
 import bcrypt from 'bcryptjs';
 import { userCreateSchema, userUpdateSchema } from '@/app/schemas/user.schema';
 import logger from '@/lib/logger';
+import * as Sentry from '@sentry/react'
 
 // POST request for creating a new user
 export async function POST(req: NextRequest) {
@@ -53,6 +54,7 @@ export async function POST(req: NextRequest) {
             data: userResponse,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to create user', error: error.message },
@@ -96,6 +98,7 @@ export async function GET(req: NextRequest) {
         const { password, ...userData } = user.toObject();
         return NextResponse.json({ message: 'User fetched successfully', data: userData });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to fetch user', error: error.message },
@@ -160,6 +163,7 @@ export async function PUT(req: NextRequest) {
             data: userData,
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to update user.', error: error.message },
@@ -207,6 +211,7 @@ export async function DELETE(req: NextRequest) {
             data: { email: deletedUser.email },
         });
     } catch (error) {
+        Sentry.captureException(error); // Capture the error in Sentry
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to delete user.', error: error.message },
