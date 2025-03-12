@@ -1,16 +1,18 @@
 import { RateLimiterRedis, RateLimiterRes } from 'rate-limiter-flexible';
-import redis from './redis'; // Reuse the Redis connection from redis.ts
+import Redis from 'ioredis'; // Reuse the Redis connection from redis.ts
 import logger from './logger';
+
+const redisClient = new Redis(process.env.REDIS_URL as string);
 
 export class RateLimiter {
     private rateLimiterInstance: RateLimiterRedis;
 
     constructor(points: number, duration: number) {
         this.rateLimiterInstance = new RateLimiterRedis({
-            storeClient: redis, // Use the shared Redis connection
+            storeClient: redisClient, // Use the shared Redis connection
             keyPrefix: `rate-limit-${points}-${duration}`, // Unique prefix
-            points, // Number of allowed requests
-            duration, // Timeframe in seconds
+            points: 10, // Number of allowed requests
+            duration: 60, // Timeframe in seconds
         });
     }
 

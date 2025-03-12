@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectMongo from '@/lib/mongoose';
 import Post from '@/app/models/Post';
 import mongoose from 'mongoose';
-import { postSchema } from '@/app/schemas/post.schema';
+import { postSchema, postUpdateSchema } from '@/app/schemas/post.schema';
 import redis from '@/lib/redis';
 import { RateLimiter } from '@/lib/rateLimiter';
 import logger from '@/lib/logger';
@@ -215,6 +215,7 @@ export async function PUT(req: NextRequest) {
         // Extract post ID from the query parameters
         const url = new URL(req.url);
         const postId = url.searchParams.get('id');
+        console.log("Extracted postID: ", postId);
 
         if (!postId) {
             return NextResponse.json(
@@ -225,9 +226,10 @@ export async function PUT(req: NextRequest) {
 
         // Parse the request body for updated data
         const { title, content, tags } = await req.json();
+        console.log("Recieved Request body: ", {title});
 
         // Validate using Zod schema
-        const parsedBody = postSchema.safeParse({ title, content, tags, author: postId });
+        const parsedBody = postUpdateSchema.safeParse({ title, content, tags, author: postId });
 
         if (!parsedBody.success) {
             return NextResponse.json(
@@ -263,7 +265,9 @@ export async function PUT(req: NextRequest) {
             data: updatedPost,
         });
     } catch (error) {
+        console.error(error);
         Sentry.captureException(error); // Capture the error in Sentry
+        console.error(error);
         if (error instanceof Error) {
             return NextResponse.json(
                 { message: 'Failed to update post', error: error.message },
@@ -303,6 +307,7 @@ export async function DELETE(req: NextRequest) {
         // Extract post ID from the query parameters
         const url = new URL(req.url);
         const postId = url.searchParams.get('id');
+        console.log("Extracted postId in delete: ", postId);
 
         if (!postId) {
             return NextResponse.json(
@@ -313,6 +318,7 @@ export async function DELETE(req: NextRequest) {
 
         // Find and delete the post by ID
         const deletedPost = await Post.findByIdAndDelete(postId);
+        console.log("Deleted post: ", deletedPost);
 
         logger.info(`Post with ID: "${postId}" deleted successfully`);
 
