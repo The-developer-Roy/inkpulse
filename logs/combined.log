@@ -682,3 +682,21 @@
 {"level":"error","message":"Unexpected error during rate limiting for key: unknown","timestamp":"2025-03-11 13:00:54"}
 {"level":"info","message":"Received a DELETE request from the endpoint: \"api/post\"","timestamp":"2025-03-11 13:00:54"}
 {"level":"error","message":"Unexpected error during rate limiting for key: unknown","timestamp":"2025-03-11 13:01:39"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-14 15:15:02"}
+{"level":"info","message":"Authorized an user through google","timestamp":"2025-03-14 15:15:03"}
+{"level":"info","message":"Created a new user through google","timestamp":"2025-03-14 15:15:03"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-14 15:25:29"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-14 15:25:32"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-15 11:33:57"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-15 11:38:34"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-15 11:38:37"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-17 15:06:50"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-18 16:00:34"}
+{"level":"info","message":"User johndoe@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:00:36"}
+{"level":"info","message":"User testname@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:12:15"}
+{"level":"info","message":"User testname@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:18:04"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-18 16:21:45"}
+{"level":"info","message":"User testname@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:21:46"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-18 16:28:12"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-18 16:28:13"}
+{"level":"info","message":"User subh43@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:29:24"}

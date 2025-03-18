@@ -1,69 +1,95 @@
-// src/app/auth/signin/page.tsx
-
 "use client";
-
+import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Dancing_Script } from "next/font/google";
+import { Eye, EyeClosed } from "lucide-react";
+import Link from "next/link";
+
+const dancingScript = Dancing_Script({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 const SignInPage = () => {
-  const handleLogin = (provider: string) => {
-    signIn(provider);
-  };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false)
+    const router = useRouter();
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
+    const handleLogin = async () => {
+        const result = await signIn("credentials", {
+            email,
+            password,
+            redirect: false, // Prevents automatic redirect; we'll handle it manually
+        });
 
-        {/* Login with Email and Password */}
-        <form method="post" action="/api/auth/callback/credentials" className="mb-4">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Login
-          </button>
-        </form>
+        if (result?.ok) {
+            router.push("/"); // Redirect after successful login
+        } else {
+            alert("Invalid credentials. Please try again.");
+        }
+    };
 
-        <div className="flex items-center justify-center mb-4">
-          <span className="text-gray-500 text-sm">or sign in with</span>
+
+    return (
+        <div
+            className={`bg-dominant h-[90%] w-[90%] flex justify-center items-center rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-5`}
+        >
+            <div className="w-[50%] h-[90%] bg-[#d9d9d9] rounded-3xl">
+                <img
+                    src="/Write.png"
+                    alt="write"
+                    className="rounded-3xl object-cover h-[100%] w-[100%]"
+                />
+            </div>
+            <div className="h-[90%] w-[50%] flex justify-center items-center flex-col gap-5">
+                <h1 className="text-4xl">Login</h1>
+                <input
+                    type="text"
+                    placeholder="Enter Your Email..."
+                    className="p-2 w-[70%] h-[10%] rounded-md placeholder:text-[#959595] outline-none"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className="relative w-[70%] h-[10%]">
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter Your Password..."
+                        className="p-2 w-full h-full rounded-md placeholder:text-[#959595] outline-none"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button
+                        type="button"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}
+                    </button>
+                </div>
+                <button
+                    className="w-[70%] bg-secondary rounded-full h-[10%] text-2xl outline-none"
+                    onClick={handleLogin}
+                >
+                    Login
+                </button>
+                <span className="text-lg">New user? <Link className="text-blue-600 underline" href={"/auth/register"}>Register</Link></span>
+                <div className="flex justify-center items-center gap-2 w-full">
+                    <hr className="h-[2px] w-[30%] bg-black" />
+                    <span>Or</span>
+                    <hr className="h-[2px] w-[30%] bg-black" />
+                </div>
+                <button
+                    className="w-[70%] bg-secondary rounded-full h-[10%] text-2xl outline-none flex justify-center items-center gap-5"
+                    onClick={() => signIn("google")}
+                >
+                    <img src="/google-icon-logo-svgrepo-com.svg" className="w-7 h-7" alt="Google" />
+                    Continue With Google
+                </button>
+            </div>
         </div>
-
-        {/* Social Login Buttons */}
-        <div className="flex flex-col space-y-4">
-          <button
-            onClick={() => handleLogin("google")}
-            className="flex items-center justify-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded shadow"
-          >
-            Sign in with Google
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default SignInPage;

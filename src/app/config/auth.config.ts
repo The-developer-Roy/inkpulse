@@ -7,6 +7,7 @@ import connectMongo from '@/lib/mongoose';
 import logger from '@/lib/logger';
 
 const authOptions: NextAuthOptions = {
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         // Credentials Provider
         CredentialsProvider({
@@ -24,13 +25,14 @@ const authOptions: NextAuthOptions = {
                 const user = await User.findOne({ email: credentials.email });
 
                 // Check if the user exists and password is correct
-                if (user && bcrypt.compareSync(credentials.password, user.password)) {
+                if (user && await bcrypt.compare(credentials.password, user.password)) {
+                    logger.info(`User ${user.email} successfully logged in through credentials`);
                     return { id: user._id.toString(), email: user.email, name: user.name };
                 }
-
-                logger.info("An user got authorized through crendentials");
-
-                return null;
+                else{
+                    logger.warn(`Login failed: Incorrecr password for ${credentials.email}`);
+                    return null;
+                }
             },
         }),
 
