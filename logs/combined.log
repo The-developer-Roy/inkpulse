@@ -700,3 +700,6 @@
 {"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-18 16:28:12"}
 {"level":"info","message":"Created a new user successfully","timestamp":"2025-03-18 16:28:13"}
 {"level":"info","message":"User subh43@gmail.com successfully logged in through credentials","timestamp":"2025-03-18 16:29:24"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-19 00:26:08"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-19 00:26:09"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-19 00:26:10"}
