@@ -9,7 +9,6 @@ import logger from '@/lib/logger';
 const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
-        // Credentials Provider
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
@@ -18,25 +17,38 @@ const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 await connectMongo();
-                if (!credentials?.email || !credentials.password) {
+
+                // Validate credentials exist
+                if (!credentials?.email || !credentials?.password) {
+                    console.log("Missing credentials");
                     return null;
                 }
 
+                // Find user
                 const user = await User.findOne({ email: credentials.email });
-
-                // Check if the user exists and password is correct
-                if (user && await bcrypt.compare(credentials.password, user.password)) {
-                    logger.info(`User ${user.email} successfully logged in through credentials`);
-                    return { id: user._id.toString(), email: user.email, name: user.name };
-                }
-                else{
-                    logger.warn(`Login failed: Incorrecr password for ${credentials.email}`);
+                if (user) {
+                    const isMatch = await bcrypt.compare(credentials.password, user.password);
+                    // Check password
+                    if (isMatch) {
+                        // If everything is valid, return user object
+                        return {
+                            id: user._id.toString(),
+                            name: user.name,
+                            email: user.email,
+                        };
+                    } else {
+                        console.log("Invalid password");
+                        return null;
+                    }
+                } else {
+                    console.log("User not found");
                     return null;
                 }
+
+
             },
         }),
 
-        // Google Provider
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
@@ -45,38 +57,40 @@ const authOptions: NextAuthOptions = {
 
     callbacks: {
         async signIn({ user, account, profile }) {
-            await connectMongo(); // Ensure DB connection
+            await connectMongo();
 
+            // Only handle Google signup here
             if (account?.provider === 'google') {
                 const existingUser = await User.findOne({ email: profile?.email });
 
                 if (existingUser) {
-                    return true; // Allow sign-in
+                    logger.info(`Existing user signed in with Google: ${profile?.email}`);
+                    return true;
                 }
 
-                logger.info("Authorized an user through google");
-
-                // Create new user if not found
                 const newUser = new User({
-                    name: profile?.name, // GitHub uses 'login' instead of 'name'
+                    name: profile?.name,
                     email: profile?.email,
-                    password: null, // Set to null as OAuth does not use passwords
+                    password: null,
                 });
 
                 await newUser.save();
-                logger.info("Created a new user through google");
-                return true; // Allow sign-in after user creation
+                logger.info(`Created new user through Google: ${profile?.email}`);
+                return true;
             }
 
-            return false; // Deny sign-in for unsupported providers
+            // ✅ For credentials, always return true here.
+            // The authorize() already validated the user.
+            return true;
         },
+
         async session({ session, token }) {
             if (token) {
                 session.user = {
-                    id: token.id as string, // Explicitly set the id
+                    id: token.id as string,
                     name: token.name as string,
                     email: token.email as string,
-                    image: token.picture as string | undefined, // Optional image field
+                    image: token.picture as string | undefined,
                 };
             }
             return session;
@@ -90,14 +104,11 @@ const authOptions: NextAuthOptions = {
             }
             return token;
         },
-
     },
+
     pages: {
-        signIn: '/auth/signin', // Customize the sign-in page path
+        signIn: '/auth/signin',
     },
-
 };
-
-
 
 export default authOptions;

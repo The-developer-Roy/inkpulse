@@ -703,3 +703,10 @@
 {"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-19 00:26:08"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-19 00:26:09"}
 {"level":"info","message":"Created a new user successfully","timestamp":"2025-03-19 00:26:10"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-19 11:33:09"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-19 11:33:11"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-19 11:33:12"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-22 13:38:55"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-22 13:38:58"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-22 13:39:00"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-23 23:41:37"}

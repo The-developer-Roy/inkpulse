@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { Dancing_Script } from "next/font/google";
 import { Eye, EyeClosed } from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import Spinner from "@/components/Spinner";
 
 const dancingScript = Dancing_Script({
     weight: "400",
@@ -15,27 +17,46 @@ const SignInPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false)
     const router = useRouter();
 
     const handleLogin = async () => {
-        const result = await signIn("credentials", {
-            email,
-            password,
-            redirect: false, // Prevents automatic redirect; we'll handle it manually
-        });
+        const loadingToast = toast.loading("Signing in...");
+        try {
+            setLoading(true);
+            const result = await signIn("credentials", {
+                email,
+                password,
+                redirect: false,
+            });
 
-        if (result?.ok) {
-            router.push("/"); // Redirect after successful login
-        } else {
-            alert("Invalid credentials. Please try again.");
+            console.log("RESULT:", result);
+
+            if (result?.ok && !result?.error) {
+                toast.success("User logged in successfully", { id: loadingToast });
+                router.push("/");
+            } else {
+                toast.error("Invalid credentials. Please try again.", { id: loadingToast });
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            toast.error("Login failed. Please try again.", { id: loadingToast });
+        } finally {
+            setLoading(false);
         }
     };
 
+
+    const navigateWithSpinner = (path: string) => {
+        setLoading(true);
+        router.push(path);
+    }
 
     return (
         <div
             className={`bg-dominant h-[90%] w-[90%] flex justify-center items-center rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-5`}
         >
+            {loading && (<Spinner />)}
             <div className="w-[50%] h-[90%] bg-[#d9d9d9] rounded-3xl">
                 <img
                     src="/Write.png"
@@ -74,7 +95,7 @@ const SignInPage = () => {
                 >
                     Login
                 </button>
-                <span className="text-lg">New user? <Link className="text-blue-600 underline" href={"/auth/register"}>Register</Link></span>
+                <span className="text-lg">New user? <button className="text-blue-600 underline" onClick={() => navigateWithSpinner("/auth/register")}>Register</button></span>
                 <div className="flex justify-center items-center gap-2 w-full">
                     <hr className="h-[2px] w-[30%] bg-black" />
                     <span>Or</span>
