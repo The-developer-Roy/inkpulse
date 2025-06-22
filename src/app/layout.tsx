@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ErrorBoundaryClient from "@/components/ErrorBoundaryClient";
 import { Toaster } from "react-hot-toast";
+import SessionProviderWrapper from "@/components/SessionProviderWrapper";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -25,15 +26,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background h-screen w-screen flex justify-center items-center`}
-            >
-                <ErrorBoundaryClient>
-                    {children}
-                    <Toaster position="top-center"/>
-                </ErrorBoundaryClient>
-            </body>
-        </html>
+        <SessionProviderWrapper>
+            <html lang="en">
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background min-h-screen w-screen overflow-y-auto overflow-x-hidden`}
+                >
+                    <ErrorBoundaryClient>
+                        {children}
+                        <Toaster position="top-center" />
+                    </ErrorBoundaryClient>
+                </body>
+            </html>
+        </SessionProviderWrapper>
     );
 }

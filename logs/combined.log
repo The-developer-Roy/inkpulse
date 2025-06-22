@@ -710,3 +710,27 @@
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-22 13:38:58"}
 {"level":"info","message":"Created a new user successfully","timestamp":"2025-03-22 13:39:00"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-23 23:41:37"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-24 12:38:56"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-24 12:38:58"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-24 12:50:44"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-24 12:50:46"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-24 13:30:03"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-24 13:30:06"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-27 10:51:14"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-03-27 10:51:16"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-27 10:51:18"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-03-27 11:08:05"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-03-27 11:08:06"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-03-30 15:30:35"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-03-30 15:35:11"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-06-22 14:21:03"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-22 14:21:05"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-06-22 14:21:06"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-22 14:42:47"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-22 14:47:48"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 01:07:06"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-23 01:07:48"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:00:37"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:09:35"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:12:06"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:14:44"}

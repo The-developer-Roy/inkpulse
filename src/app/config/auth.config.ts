@@ -35,6 +35,7 @@ const authOptions: NextAuthOptions = {
                             id: user._id.toString(),
                             name: user.name,
                             email: user.email,
+                            profileCompleted: user.profileCompleted,
                         };
                     } else {
                         console.log("Invalid password");
@@ -91,6 +92,7 @@ const authOptions: NextAuthOptions = {
                     name: token.name as string,
                     email: token.email as string,
                     image: token.picture as string | undefined,
+                    profileCompleted: token.profileCompleted as boolean,
                 };
             }
             return session;
@@ -101,6 +103,7 @@ const authOptions: NextAuthOptions = {
                 token.id = user.id;
                 token.name = user.name;
                 token.email = user.email;
+                token.profileCompleted = user.profileCompleted;
             }
             return token;
         },

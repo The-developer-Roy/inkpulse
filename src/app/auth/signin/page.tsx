@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Dancing_Script } from "next/font/google";
 import { Eye, EyeClosed } from "lucide-react";
-import Link from "next/link";
 import toast from "react-hot-toast";
 import Spinner from "@/components/Spinner";
 
@@ -33,8 +32,14 @@ const SignInPage = () => {
             console.log("RESULT:", result);
 
             if (result?.ok && !result?.error) {
+                const session = await getSession();
                 toast.success("User logged in successfully", { id: loadingToast });
-                router.push("/");
+
+                if (session?.user.profileCompleted) {
+                    router.push("/");
+                } else {
+                    router.push("/setup_profile");
+                }
             } else {
                 toast.error("Invalid credentials. Please try again.", { id: loadingToast });
             }
@@ -54,7 +59,7 @@ const SignInPage = () => {
 
     return (
         <div
-            className={`bg-dominant h-[90%] w-[90%] flex justify-center items-center rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-5`}
+            className={`bg-dominant h-[90%] w-[90%] flex justify-center items-center rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
         >
             {loading && (<Spinner />)}
             <div className="w-[50%] h-[90%] bg-[#d9d9d9] rounded-3xl">
