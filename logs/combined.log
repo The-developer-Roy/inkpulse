@@ -734,3 +734,26 @@
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:09:35"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:12:06"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 02:14:44"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-23 23:05:01"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 01:30:16"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 13:34:50"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 14:37:08"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 14:49:24"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 15:53:49"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 21:46:48"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-24 22:44:43"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-25 12:39:19"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-25 21:33:53"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-06-25 23:32:30"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-25 23:32:33"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-06-25 23:32:35"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-25 23:35:37"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-26 14:36:09"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-26 14:39:06"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-26 20:30:33"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-26 23:13:39"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-26 23:26:25"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-27 01:12:51"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-27 01:31:58"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-27 01:43:37"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-27 01:44:52"}
