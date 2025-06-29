@@ -757,3 +757,244 @@
 {"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-27 01:31:58"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-27 01:43:37"}
 {"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-27 01:44:52"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-28 22:40:35"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-28 22:44:03"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-28 22:44:23"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:23"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:24"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:24"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:24"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:24"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:24"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:27"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:28"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:28"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:29"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:30"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:30"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:31"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:32"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:33"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:34"}
+{"level":"error","message":"Unexpected error during rate limiting for key: ::1","timestamp":"2025-06-28 22:44:35"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:35"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:36"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:38"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:39"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:40"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:41"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:43"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:44"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:46"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:49"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:50"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:54"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:55"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:57"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:44:59"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:01"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:03"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:05"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:07"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:09"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:11"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:13"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:15"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:17"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:19"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:21"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:23"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:28"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:31"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:33"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:35"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:37"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:39"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:41"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:43"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:49"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:53"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:55"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:57"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:45:59"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:01"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:03"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:05"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:07"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:09"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:11"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:13"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:15"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:17"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:19"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:21"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:23"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:27"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:29"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:31"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:33"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:36"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 22:46:38"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-28 23:02:41"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-28 23:04:25"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-28 23:04:44"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:44"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:45"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:46"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:46"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:46"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:47"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:47"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:48"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:48"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:49"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:50"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:53"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:54"}
+{"level":"error","message":"Unexpected error during rate limiting for key: ::1","timestamp":"2025-06-28 23:04:55"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:55"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:57"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:58"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:04:59"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:05:00"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:05:01"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:05:03"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:05:04"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-16049.c283.us-east-1-4.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:05:05"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-28 23:27:22"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-28 23:30:26"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:27"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:27"}
+{"level":"error","message":"Unexpected error during rate limiting for key: ::1","timestamp":"2025-06-28 23:30:27"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:27"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:27"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:28"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:28"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:28"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:28"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:29"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:29"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:29"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:29"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:30"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:30"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:31"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:31"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:32"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:32"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-28 23:30:32"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:32"}
+{"level":"error","message":"Unexpected error during rate limiting for key: ::1","timestamp":"2025-06-28 23:30:33"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:33"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:33"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:34"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:34"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:34"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:35"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:35"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:36"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:36"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:37"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:37"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:30:38"}
+{"level":"error","message":"Redis Error: WRONGPASS invalid username-password pair","timestamp":"2025-06-28 23:30:38"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-28 23:43:50"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-28 23:45:43"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:45:43"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-28 23:45:44"}
+{"level":"error","message":"Redis Error: read ECONNRESET","timestamp":"2025-06-28 23:49:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:25"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:26"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:27"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:27"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:28"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:28"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:29"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:29"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:30"}
+{"level":"error","message":"Redis Error: connect ETIMEDOUT","timestamp":"2025-06-28 23:49:41"}
+{"level":"error","message":"Redis Error: connect ETIMEDOUT","timestamp":"2025-06-28 23:49:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:53"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:54"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:55"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:49:56"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:49:57"}
+{"level":"error","message":"Redis Error: read ECONNRESET","timestamp":"2025-06-28 23:50:49"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:50"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:51"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:52"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
+{"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-28 23:50:54"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-29 21:04:33"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 21:07:07"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 21:07:08"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 21:07:08"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-29 21:47:09"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 21:48:02"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 21:48:02"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 21:48:03"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 21:49:19"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 21:49:19"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 21:49:20"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 22:21:16"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 22:21:17"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 22:21:18"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-29 22:48:05"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 22:49:29"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 22:49:33"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 22:49:37"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-29 22:50:32"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-29 23:12:03"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-29 23:14:43"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-29 23:14:44"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-29 23:14:44"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 00:01:28"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 00:03:45"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 00:03:46"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 00:03:47"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 00:39:28"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 00:40:49"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 00:40:50"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 00:40:50"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 00:50:55"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 00:53:37"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 00:53:37"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 00:53:38"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 00:57:16"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 00:59:17"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 00:59:17"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 00:59:17"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 01:46:52"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 01:46:53"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 01:46:54"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-06-30 01:47:47"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 01:47:56"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 01:47:57"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 01:47:58"}

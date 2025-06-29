@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
@@ -12,6 +14,7 @@ import { default as TipImage } from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import "./editor.css"
 import Toolbar from "@/components/Toolbar";
+import toast from "react-hot-toast";
 
 interface UserProfile {
     name: string;
@@ -55,6 +58,50 @@ export default function EditorClient({ user }: { user: UserProfile }) {
         immediatelyRender: false,
     });
 
+    const router = useRouter();
+    const { data: session } = useSession();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (status: "draft" | "published") => {
+        if (!editor) return;
+
+        const loadingToast = toast.loading(status === "published" ? "Publishing..." : "Saving Draft...");
+
+        const content = editor.getHTML();
+        const title = "Untitled Post" // May want a title input in the UI
+
+        try {
+            setIsSubmitting(true);
+
+            const res = await fetch("/api/post", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title,
+                    content,
+                    tags: [],
+                    author: session?.user?.id,
+                    status,
+                }),
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                toast.success(status === "published" ? "Post Published." : "Draft Saved.", { id: loadingToast });
+                if (status==="published") {
+                    router.push(`/post/${data.data._id}`); // redirect to post page
+                }
+            } else {
+                toast.error(data.message || status === "published" ? "Failed to Save draft..." : "Failed to publish...", { id: loadingToast });
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error("Something went wrong :(", { id: loadingToast });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <>
             <div className="w-full h-full flex justify-around items-center flex-col gap-4 p-4">
@@ -72,11 +119,11 @@ export default function EditorClient({ user }: { user: UserProfile }) {
                         <h3 className="text-xl">{user.name}</h3>
                     </div>
                     <div className="flex justify-center items-center gap-4">
-                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]">
+                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={() => handleSubmit("published")} disabled={isSubmitting}>
                             <Image src="/ext_link.svg" alt="external link svg" height={25} width={25} />
                             Publish
                         </button>
-                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]">
+                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={()=>handleSubmit("draft")} disabled={isSubmitting}>
                             <Image src="/save.svg" alt="save svg" height={25} width={25} />
                             Save
                         </button>
