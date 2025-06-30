@@ -15,6 +15,7 @@ import Link from "@tiptap/extension-link";
 import "./editor.css"
 import Toolbar from "@/components/Toolbar";
 import toast from "react-hot-toast";
+import EditorSetupModal from "@/components/EditorSetupModal";
 
 interface UserProfile {
     name: string;
@@ -61,6 +62,11 @@ export default function EditorClient({ user }: { user: UserProfile }) {
     const router = useRouter();
     const { data: session } = useSession();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [postInfo, setpostInfo] = useState<null | { title: string; tags: string[] }>(null);
+
+    const handleModalSubmit = (data: { title: string; tags: string[] }) => {
+        setpostInfo(data);
+    };
 
     const handleSubmit = async (status: "draft" | "published") => {
         if (!editor) return;
@@ -68,7 +74,19 @@ export default function EditorClient({ user }: { user: UserProfile }) {
         const loadingToast = toast.loading(status === "published" ? "Publishing..." : "Saving Draft...");
 
         const content = editor.getHTML();
-        const title = "Untitled Post" // May want a title input in the UI
+
+        // Get title and tags from localStorage
+        const title = localStorage.getItem("post_title");
+        const tagsRaw = localStorage.getItem("post_tags");
+        let tags: string[] = [];
+
+        try {
+            if (tagsRaw) {
+                tags = JSON.parse(tagsRaw);
+            }
+        } catch (err) {
+            console.warn("Failed to parse tags from localStorage", err);
+        }
 
         try {
             setIsSubmitting(true);
@@ -79,7 +97,7 @@ export default function EditorClient({ user }: { user: UserProfile }) {
                 body: JSON.stringify({
                     title,
                     content,
-                    tags: [],
+                    tags,
                     author: session?.user?.id,
                     status,
                 }),
@@ -88,7 +106,9 @@ export default function EditorClient({ user }: { user: UserProfile }) {
             const data = await res.json();
             if (res.ok) {
                 toast.success(status === "published" ? "Post Published." : "Draft Saved.", { id: loadingToast });
-                if (status==="published") {
+                localStorage.removeItem("post_title");
+                localStorage.removeItem("post_tags");
+                if (status === "published") {
                     router.push(`/post/${data.data._id}`); // redirect to post page
                 }
             } else {
@@ -105,36 +125,41 @@ export default function EditorClient({ user }: { user: UserProfile }) {
     return (
         <>
             <div className="w-full h-full flex justify-around items-center flex-col gap-4 p-4">
-                <div className="flex justify-around items-center w-full">
-                    <div className="flex justify-center items-center gap-2">
-                        {user.profilePic && (
-                            <Image
-                                src={user.profilePic}
-                                alt={`${user.name}'s profile pic`}
-                                width={50}
-                                height={50}
-                                className="rounded-full"
-                            />
-                        )}
-                        <h3 className="text-xl">{user.name}</h3>
-                    </div>
-                    <div className="flex justify-center items-center gap-4">
-                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={() => handleSubmit("published")} disabled={isSubmitting}>
-                            <Image src="/ext_link.svg" alt="external link svg" height={25} width={25} />
-                            Publish
-                        </button>
-                        <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={()=>handleSubmit("draft")} disabled={isSubmitting}>
-                            <Image src="/save.svg" alt="save svg" height={25} width={25} />
-                            Save
-                        </button>
-                    </div>
-                </div>
-                <div className="w-[794px] flex flex-col justify-center items-center">
-                    <Toolbar editor={editor} />
-                    <div className="pages-container" onDrop={(e) => e.preventDefault()} onDragOver={(e) => e.preventDefault()} onDragStart={(e) => e.preventDefault()}>
-                        <EditorContent editor={editor} />
-                    </div>
-                </div>
+                {!postInfo && <EditorSetupModal onSubmit={handleModalSubmit} />}
+                {postInfo && (
+                    <>
+                        <div className="flex justify-around items-center w-full">
+                            <div className="flex justify-center items-center gap-2">
+                                {user.profilePic && (
+                                    <Image
+                                        src={user.profilePic}
+                                        alt={`${user.name}'s profile pic`}
+                                        width={50}
+                                        height={50}
+                                        className="rounded-full"
+                                    />
+                                )}
+                                <h3 className="text-xl">{user.name}</h3>
+                            </div>
+                            <div className="flex justify-center items-center gap-4">
+                                <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={() => handleSubmit("published")} disabled={isSubmitting}>
+                                    <Image src="/ext_link.svg" alt="external link svg" height={25} width={25} />
+                                    Publish
+                                </button>
+                                <button className="bg-secondary rounded-md flex justify-center items-center gap-2 p-2 hover:bg-[#f4b13f]" onClick={() => handleSubmit("draft")} disabled={isSubmitting}>
+                                    <Image src="/save.svg" alt="save svg" height={25} width={25} />
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                        <div className="w-[794px] flex flex-col justify-center items-center">
+                            <Toolbar editor={editor} />
+                            <div className="pages-container" onDrop={(e) => e.preventDefault()} onDragOver={(e) => e.preventDefault()} onDragStart={(e) => e.preventDefault()}>
+                                <EditorContent editor={editor} />
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );

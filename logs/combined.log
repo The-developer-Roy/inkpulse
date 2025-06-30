@@ -998,3 +998,11 @@
 {"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 01:47:56"}
 {"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 01:47:57"}
 {"level":"info","message":"Created a new post","timestamp":"2025-06-30 01:47:58"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 13:03:38"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 13:06:34"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 13:06:35"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 13:06:36"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-06-30 14:06:28"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-06-30 14:07:45"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-30 14:07:45"}
+{"level":"info","message":"Created a new post","timestamp":"2025-06-30 14:07:46"}
