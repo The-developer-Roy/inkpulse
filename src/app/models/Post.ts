@@ -7,6 +7,7 @@ export interface IPost extends Document {
   postPic?: string;
   author: mongoose.Types.ObjectId;
   status: 'draft' | 'published';
+  likes: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -14,11 +15,12 @@ export interface IPost extends Document {
 const PostSchema: Schema = new Schema(
   {
     title: { type: String, required: true },
-    content: { type: String, required: true, default: "" },
+    content: { type: String, required: true },
     tags: { type: [String], default: [] },
     postPic: { type: String },
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     status: { type: String, enum: ['draft', 'published'], default: 'draft' },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }],
   },
   { timestamps: true }
 );

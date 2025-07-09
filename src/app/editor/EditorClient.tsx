@@ -16,6 +16,7 @@ import "./editor.css"
 import Toolbar from "@/components/Toolbar";
 import toast from "react-hot-toast";
 import EditorSetupModal from "@/components/EditorSetupModal";
+import ThumbnailUploadModal from "@/components/ThumbNailUploadModal";
 
 interface UserProfile {
     name: string;
@@ -63,6 +64,8 @@ export default function EditorClient({ user }: { user: UserProfile }) {
     const { data: session } = useSession();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [postInfo, setpostInfo] = useState<null | { title: string; tags: string[] }>(null);
+    const [showThumbnailModal, setShowThumbnailModal] = useState(false);
+    const [newPostId, setNewPostId] = useState<string | null>(null);
 
     const handleModalSubmit = (data: { title: string; tags: string[] }) => {
         setpostInfo(data);
@@ -109,7 +112,8 @@ export default function EditorClient({ user }: { user: UserProfile }) {
                 localStorage.removeItem("post_title");
                 localStorage.removeItem("post_tags");
                 if (status === "published") {
-                    router.push(`/post/${data.data._id}`); // redirect to post page
+                    setNewPostId(data.data._id); // Save the MongoDB ObjectId
+                    setShowThumbnailModal(true);
                 }
             } else {
                 toast.error(data.message || status === "published" ? "Failed to Save draft..." : "Failed to publish...", { id: loadingToast });
@@ -160,6 +164,7 @@ export default function EditorClient({ user }: { user: UserProfile }) {
                         </div>
                     </>
                 )}
+                {showThumbnailModal && newPostId && (<ThumbnailUploadModal postId={newPostId} onClose={()=>{setShowThumbnailModal(false); router.push(`/post/${newPostId}`);}}/>)}
             </div>
         </>
     );

@@ -5,6 +5,9 @@ import connectMongo from "@/lib/mongoose";
 import User from "@/app/models/User";
 import Post from "@/app/models/Post";
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/config/auth.config";
+import LikeButton from "@/components/LikeButton";
 
 interface Params {
   params: { id: string };
@@ -23,10 +26,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function PostPage({ params }: Params) {
   await connectMongo();
+  const session = await getServerSession(authOptions);
   const { id } = await params;
   const post = await Post.findById(id).populate("author");
 
   if (!post || !post.author || post.status !== "published") return notFound();
+
+  const currentUserId = session?.user.id;
+  const isLiked = currentUserId ? post.likes.includes(currentUserId) : false;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 bg-white">
@@ -49,6 +56,8 @@ export default async function PostPage({ params }: Params) {
         className="prose lg:prose-lg max-w-none"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+
+      <LikeButton postId={post._id.toString()} initialLiked={isLiked} initialLikesCount={post.likes.length}/>
     </div>
   );
 }

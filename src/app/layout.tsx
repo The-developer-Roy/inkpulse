@@ -29,7 +29,7 @@ export default function RootLayout({
         <SessionProviderWrapper>
             <html lang="en">
                 <body
-                    className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background min-h-screen w-screen overflow-y-auto overflow-x-hidden`}
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background min-h-screen w-screen overflow-y-auto overflow-x-hidden m-0 p-0`}
                 >
                     <ErrorBoundaryClient>
                         {children}

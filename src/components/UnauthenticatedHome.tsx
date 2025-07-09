@@ -1,0 +1,253 @@
+'use client'
+
+import React, { useState } from 'react'
+import Navbar from './Navbar'
+import { Dancing_Script, Poppins } from 'next/font/google'
+import { TypeAnimation } from 'react-type-animation'
+import { Clapperboard, Ellipsis, Heart, Search, Sparkles, Star, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
+import Image from 'next/image'
+import Footer from './Footer'
+import { useRouter } from 'next/navigation'
+import Spinner from './Spinner'
+
+const dancingScript = Dancing_Script({ weight: '400', subsets: ['latin'] });
+const poppins = Poppins({ weight: '400', subsets: ['latin'] });
+
+const UnauthenticatedHome = () => {
+
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    const navigateWithSpinner = (path: string) => {
+        setLoading(true);
+        router.push(path);
+    }
+
+    return (
+        <main className={`custom-cursor min-h-screen w-full flex justify-center items-center flex-col overflow-x-hidden ${poppins.className}`}>
+            {loading && (<Spinner/>)}
+            <Navbar variant="unauthenticated" setLoading={setLoading}/>
+
+            {/* HERO SECTION */}
+            <section className="w-full min-h-screen flex justify-center items-center pt-36 px-6 md:px-16">
+                <div className="flex flex-col lg:flex-row gap-10 w-full h-full justify-center items-center">
+                    {/* Left Text Content */}
+                    <div className="flex flex-col gap-4 max-w-xl lg:w-1/2 animate-fade-in justify-center items-start">
+                        <span className={`${dancingScript.className} text-6xl md:text-8xl`}>Inkpulse</span>
+                        <TypeAnimation
+                            sequence={['Read.', 2000, 'Write.', 2000, 'Connect.', 2000]}
+                            wrapper="span"
+                            cursor
+                            repeat={Infinity}
+                            style={{ fontSize: '3rem', color: '#FFB433', fontWeight: 'bold' }}
+                        />
+                        <p className="text-xl md:text-2xl mt-2">
+                            Discover, create, and share captivating stories from writers around the world. Your next favorite story is just a click away.
+                        </p>
+                        <div className="flex gap-6 mt-6 text-lg">
+                            <button onClick={()=>{navigateWithSpinner("/auth/signin")}} className="bg-secondary px-6 py-3 rounded-full shadow-md hover:bg-dominant transition-all duration-300">
+                                Read Stories
+                            </button>
+                            <button onClick={()=>{navigateWithSpinner("/auth/signin")}} className="bg-secondary px-6 py-3 rounded-full shadow-md hover:bg-dominant transition-all duration-300">
+                                Publish Stories
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Right Illustration */}
+                    <div className="w-full lg:w-1/2 flex justify-center items-center animate-fade-in delay-100">
+                        <svg className="w-full max-w-md" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* [SVG content stays unchanged] */}
+                            <rect x="100" y="50" width="300" height="300" rx="10" fill="#FBF8EF" />
+                            <rect x="120" y="80" width="260" height="20" rx="4" fill="#B4EBE6" />
+                            <rect x="120" y="110" width="200" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="130" width="180" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="150" width="220" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="180" width="260" height="20" rx="4" fill="#B4EBE6" />
+                            <rect x="120" y="210" width="200" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="230" width="180" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="250" width="220" height="10" rx="2" fill="#80CBC4" />
+                            <rect x="120" y="280" width="260" height="20" rx="4" fill="#B4EBE6" />
+                            <rect x="120" y="310" width="100" height="10" rx="2" fill="#80CBC4" />
+                            <circle cx="380" cy="310" r="20" fill="#FFB433" />
+                            <path d="M375 310L380 315L385 305" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            {/* FEATURES / VALUE SECTION */}
+            <section className="w-full flex justify-center items-center bg-primary py-20 px-6 md:px-16">
+                <div className="max-w-6xl w-full flex flex-col gap-8 animate-fade-in">
+                    <h1 className="text-4xl md:text-6xl font-bold">
+                        Why <span className={`text-secondary ${dancingScript.className}`}>Inkpulse?</span>
+                    </h1>
+
+                    <div>
+                        <TypeAnimation
+                            sequence={['Read Stories That Move You.', 11000, 'Publish with Ease.', 11000, 'Engage & Connect', 11000, 'Grow as a Writer', 11000, 'Built for Discovery', 11000,]}
+                            wrapper="h2"
+                            cursor
+                            repeat={Infinity}
+                            speed={75}
+                            className="text-2xl md:text-4xl font-semibold leading-tight"
+                        />
+                    </div>
+
+                    <div className="h-28 md:h-auto">
+                        <TypeAnimation
+                            sequence={[
+                                'Explore thousands of stories across genres — fantasy, romance, thriller, sci-fi, and more — all written by passionate creators from around the world.',
+                                7000,
+                                'Got a story to tell? Publish it in minutes. Reach a global audience and build your own community of readers and fans.',
+                                7000,
+                                'Comment on chapters, follow your favorite authors, and be part of lively discussions. Inkpulse isn’t just a platform — it’s a creative circle.',
+                                7000,
+                                'Access tools, insights, and challenges to improve your writing. Receive feedback from real readers and evolve your storytelling voice.',
+                                7000,
+                                'Get discovered with our smart recommendation engine and trending sections. Your story deserves to be read — and we help make it happen.'
+                            ]}
+                            wrapper="p"
+                            cursor
+                            repeat={Infinity}
+                            speed={75}
+                            className="text-lg md:text-2xl leading-relaxed mt-4"
+                            style={{ height: "7rem" }}
+                        />
+                    </div>
+                </div>
+            </section>
+            <section className='w-full flex justify-center items-center bg-background py-20 px-6 md:px-16 flex-col gap-5'>
+                <h1 className='text-5xl'>How <span className={`${dancingScript.className} text-secondary`}>Inkpulse</span> Works</h1>
+                <p className='text-gray-700'>Join our community of storytellers and readers in just a few simple steps.</p>
+                <div className='flex justify-center items-center gap-5'>
+                    <div className='w-[30%] p-10 bg-secondary flex justify-center items-center rounded-xl flex-col gap-5'>
+                        <div className='rounded-full bg-dominant w-16 h-16 flex justify-center items-center'>1</div>
+                        <h2 className='text-2xl text-dominant font-bold'>Create an Account</h2>
+                        <p className='text-primary text-center'>Sign up for free and set up your profile to join our vibrant community of storytellers and readers.</p>
+                    </div>
+                    <div className='w-[30%] p-10 bg-secondary flex justify-center items-center rounded-xl flex-col gap-5'>
+                        <div className='rounded-full bg-dominant w-16 h-16 flex justify-center items-center'>2</div>
+                        <h2 className='text-2xl text-dominant font-bold'>Discover or Create</h2>
+                        <p className='text-primary text-center'>Browse through thousands of stories or start writting your own masterpiece using our intuitive editor.</p>
+                    </div>
+                    <div className='w-[30%] p-10 bg-secondary flex justify-center items-center rounded-xl flex-col gap-5'>
+                        <div className='rounded-full bg-dominant w-16 h-16 flex justify-center items-center'>3</div>
+                        <h2 className='text-2xl text-dominant font-bold'>Connect & Grow</h2>
+                        <p className='text-primary text-center'>Engage with other writers, recieve feedback, and watch your audience grow as you share your stories.</p>
+                    </div>
+                </div>
+            </section>
+            <section className='w-full flex justify-center items-center bg-dominant py-20 px-6 md:px-16 flex-col gap-5'>
+                <h1 className='text-5xl'>Explore Categories</h1>
+                <p className='text-gray-700'>Find stories that match your inerests from our diverse collection of genres.</p>
+                <div className='flex justify-center items-center gap-10 w-full'>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <Sparkles size={20} />
+                        </div>
+                        <span className='text-secondary'>Fantasy</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <VenetianMask size={20} />
+                        </div>
+                        <span className='text-secondary'>Mystery</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <Heart size={20} />
+                        </div>
+                        <span className='text-secondary'>Romance</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <Swords size={20} />
+                        </div>
+                        <span className='text-secondary'>Action</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <TestTubeDiagonal size={20} />
+                        </div>
+                        <span className='text-secondary'>Sci-Fi</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <Clapperboard size={20} />
+                        </div>
+                        <span className='text-secondary'>Drama</span>
+                    </div>
+                    <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
+                        <div className='rounded-full bg-background p-2'>
+                            <Ellipsis size={20} />
+                        </div>
+                        <span className='text-secondary'>And More</span>
+                    </div>
+                </div>
+            </section>
+            <section className='w-full flex justify-center items-center bg-primary py-20 px-6 md:px-16 flex-col gap-5'>
+                <h1 className='text-5xl'>What Our Community Says</h1>
+                <p className='text-gray-700'>Hear from writers and readers who have found their home at Inkpulse</p>
+                <div className='flex justify-center items-center gap-5'>
+                    <div className='flex justify-center items-center gap-2 w-[30%] bg-dominant rounded-xl flex-col p-5'>
+                        <div className='flex justify-center items-center gap-2'>
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                        </div>
+                        <p className='text-gray-700'>"Inkpulse transformed my writting journey. The feedback I've recieved has been invaluable, and I've connected with readers from around the world. My confidence as a writer has grown tremendously."</p>
+                        <div className='flex justify-center items-center gap-3'>
+                            <Image src={'/marcus.jpeg'} alt='marcus' width={48} height={48} className='rounded-full' />
+                            <div className='flex justify-center items-center flex-col'>
+                                <span>Marcus Chen</span>
+                                <span className='text-sm text-gray-700'>Fantasy Writer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='flex justify-center items-center gap-2 w-[30%] bg-dominant rounded-xl flex-col p-5'>
+                        <div className='flex justify-center items-center gap-2'>
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                        </div>
+                        <p className='text-gray-700'>"As an avid reader, finding Inkpulse was like discovering a treasure trove. The diversity of stories and the ability to interact directly with authors has made reading a much more immersive experience."</p>
+                        <div className='flex justify-center items-center gap-3'>
+                            <Image src={'/sarah.jpeg'} alt='sarah' width={48} height={48} className='rounded-full' />
+                            <div className='flex justify-center items-center flex-col'>
+                                <span>Sarah Johnson</span>
+                                <span className='text-sm text-gray-700'>Enthusiastic Reader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='flex justify-center items-center gap-2 w-[30%] bg-dominant rounded-xl flex-col p-5'>
+                        <div className='flex justify-center items-center gap-2'>
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                            <Star size={15} fill='#ffb433' />
+                        </div>
+                        <p className='text-gray-700'>"I've been using Inkpulse for a year now, and it's helped me develope a consistent writting habit. The community is supportive, and the platform's features make publishing my work a breeze."</p>
+                        <div className='flex justify-center items-center gap-3'>
+                            <Image src={'/raj.jpeg'} alt='raj' width={48} height={48} className='rounded-full' />
+                            <div className='flex justify-center items-center flex-col'>
+                                <span>Raj Patel</span>
+                                <span className='text-sm text-gray-700'>Sci-Fi Author</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer Section */}
+            <Footer/>
+        </main>
+    )
+}
+
+export default UnauthenticatedHome
