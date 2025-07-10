@@ -3,6 +3,8 @@ import authOptions from "../config/auth.config";
 import connectMongo from "@/lib/mongoose";
 import User from "../models/User";
 import EditorClient from "./EditorClient";
+import Post from "../models/Post";
+import { notFound } from "next/navigation";
 
 interface UserProfile {
     name: string;
@@ -12,7 +14,7 @@ interface UserProfile {
     bio?: string;
 }
 
-export default async function EditorPage() {
+export default async function EditorPage({ searchParams }: { searchParams: { id?: string } }) {
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
@@ -27,7 +29,13 @@ export default async function EditorPage() {
         return <div>Home</div>;
     }
 
-    const plainUser = JSON.parse(JSON.stringify(user));
+    let postData = null;
 
-    return <EditorClient user={plainUser} />;
+    if (searchParams?.id) {
+        const post = await Post.findOne({ _id: searchParams?.id, author: session.user.id }).lean();
+        if (!post) return notFound(); // 404 if not found or unauthorized
+        postData = JSON.parse(JSON.stringify(post)); //make serializable
+    }
+
+    return <EditorClient user={JSON.parse(JSON.stringify(user))} existingPost={postData}/>;
 }

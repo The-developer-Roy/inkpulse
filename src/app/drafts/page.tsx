@@ -2,14 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 import Spinner from '@/components/Spinner';
-import PostCard from '@/components/PostCard'; // Reuse existing component
 import { useSession } from 'next-auth/react';
+import DraftPostCard from '@/components/DraftsPostCard';
 
 interface DraftPost {
     _id: string;
     title: string;
     content: string;
     postPic?: string;
+    tags: string[];
     likes: string[];
     author: {
         name: string;
@@ -56,7 +57,7 @@ const DraftsPage = () => {
             ) : (
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {drafts.map((post) => (
-                        <PostCard key={post._id} post={post} />
+                        <DraftPostCard key={post._id} post={post} onDelete={(id)=>setDrafts((prev)=>prev.filter((p)=>p._id!==id))} />
                     ))}
                 </div>
             )}

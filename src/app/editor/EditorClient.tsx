@@ -26,7 +26,15 @@ interface UserProfile {
     bio?: string;
 }
 
-export default function EditorClient({ user }: { user: UserProfile }) {
+interface existingPost{
+    _id: string;
+    title: string;
+    content: string;
+    tags: string[];
+    status: "draft" | "published";
+}
+
+export default function EditorClient({ user, existingPost }: { user: UserProfile, existingPost?: existingPost }) {
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -56,7 +64,15 @@ export default function EditorClient({ user }: { user: UserProfile }) {
                 linkOnPaste: true,
             })
         ],
-        content: "",
+        content: existingPost?.content || "",
+        editorProps: { attributes: { class: "editor-content" } },
+        onCreate: ()=>{
+            if(existingPost) {
+                localStorage.setItem("post_title", existingPost.title);
+                localStorage.setItem("post_tags", JSON.stringify(existingPost.tags));
+                setpostInfo({ title: existingPost.title, tags: existingPost.tags });
+            }
+        },
         immediatelyRender: false,
     });
 
@@ -94,8 +110,11 @@ export default function EditorClient({ user }: { user: UserProfile }) {
         try {
             setIsSubmitting(true);
 
-            const res = await fetch("/api/post", {
-                method: "POST",
+            const method = existingPost ? "PUT" : "POST";
+            const url = existingPost ? `/api/post?id=${existingPost._id}` : "/api/post";
+
+            const res = await fetch(url, {
+                method: method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     title,

@@ -21,7 +21,7 @@ export const GET = async () => {
     const drafts = await Post.find({
       status: "draft",
       author: user._id,
-    }).sort({ createdAt: -1 });
+    }).sort({ createdAt: -1 }).populate("author", "name profilePic");
 
     return NextResponse.json(drafts);
   } catch (err) {
