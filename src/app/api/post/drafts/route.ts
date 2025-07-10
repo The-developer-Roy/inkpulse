@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import authOptions from "@/app/config/auth.config";
 import connectMongo from "@/lib/mongoose";
 import Post from "@/app/models/Post";
+import User from "@/app/models/User";
 
 export const GET = async () => {
   await connectMongo();
@@ -14,9 +15,12 @@ export const GET = async () => {
   }
 
   try {
+    // Get the logged in user by email
+    const user = await User.findOne({email: session.user.email});
+
     const drafts = await Post.find({
       status: "draft",
-      "author.email": session.user.email,
+      author: user._id,
     }).sort({ createdAt: -1 });
 
     return NextResponse.json(drafts);
