@@ -1,8 +1,8 @@
 // src/app/post/page.tsx
-import React from 'react';
+import React from "react";
 import connectMongo from '@/lib/mongoose';
 import Post from '@/app/models/Post';
-import PostCard from '@/components/PostCard';
+import AllPostsClient from "./AllPostClient";
 
 export default async function AllPostsPage() {
   await connectMongo();
@@ -18,25 +18,12 @@ export default async function AllPostsPage() {
     content: post.content,
     likes: (post.likes ?? []).map((id: any) => id.toString()),
     postPic: post.postPic,
+    tags: post.tags,
     author: {
       name: post.author?.name || 'Unknown',
       profilePic: post.author?.profilePic || '',
     },
   }));
 
-  return (
-    <div className="max-w-5xl mx-auto px-4 py-10 space-y-6">
-      <h1 className="text-4xl font-bold mb-6">All Posts</h1>
-
-      {posts.length === 0 ? (
-        <p className="text-gray-600">No posts found.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {posts.map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return <AllPostsClient posts={posts}/>
 }

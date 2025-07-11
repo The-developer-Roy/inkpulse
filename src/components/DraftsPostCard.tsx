@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { convert } from "html-to-text";
+import { Trash2, PenSquare } from "lucide-react";
 
 interface DraftPost {
     _id: string;
@@ -84,13 +85,13 @@ const DraftPostCard: React.FC<Props> = ({ post, onDelete }) => {
                     onClick={handleEdit}
                     className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
-                    Edit
+                    <PenSquare size={20}/>
                 </button>
                 <button
                     onClick={()=>{handleDelete(post._id)}}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors ease-in-out"
                 >
-                    Delete
+                    <Trash2 size={20}/>
                 </button>
             </div>
         </div>

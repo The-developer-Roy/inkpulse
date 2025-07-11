@@ -21,7 +21,7 @@ const EditorSetupModal: React.FC<Props> = ({ onSubmit }) => {
             .filter(tag => tag !== '');
 
         localStorage.setItem("post_title", title);
-        localStorage.setItem("posttags", JSON.stringify(tagsArray));
+        localStorage.setItem("post_tags", JSON.stringify(tagsArray));
 
         onSubmit({ title, tags: tagsArray });
         setOpen(false);

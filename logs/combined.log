@@ -1084,3 +1084,14 @@
 {"level":"info","message":"Received a DELETE request from the endpoint: \"api/post\"","timestamp":"2025-07-11 02:41:21"}
 {"level":"info","message":"Connected to Redis","timestamp":"2025-07-11 02:41:22"}
 {"level":"info","message":"Post with ID: \"686eacc4d6cd34b81cf544bc\" deleted successfully","timestamp":"2025-07-11 02:41:23"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-11 15:51:58"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-07-11 15:59:26"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-11 15:59:26"}
+{"level":"info","message":"Created a new post","timestamp":"2025-07-11 15:59:27"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/post\"","timestamp":"2025-07-11 16:18:00"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-11 16:18:01"}
+{"level":"info","message":"Created a new post","timestamp":"2025-07-11 16:18:02"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-07-11 16:18:19"}
+{"level":"error","message":"Redis Error: read ECONNRESET","timestamp":"2025-07-11 17:59:27"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-11 17:59:27"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-11 18:28:33"}

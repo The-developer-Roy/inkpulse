@@ -504,3 +504,4 @@
 {"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
 {"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
 {"level":"error","message":"Redis Error: getaddrinfo ENOTFOUND redis-12636.c301.ap-south-1-1.ec2.redns.redis-cloud.com","timestamp":"2025-06-28 23:50:53"}
+{"level":"error","message":"Redis Error: read ECONNRESET","timestamp":"2025-07-11 17:59:27"}
