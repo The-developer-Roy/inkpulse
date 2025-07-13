@@ -19,11 +19,27 @@ type NavbarProps = {
     setLoading: (value: boolean) => void;
 };
 
+const dropdownVariants = {
+    open: {
+        opacity: 1,
+        y: 0,
+        display: "flex",
+        transition: { duration: 0.2 },
+    },
+    closed: {
+        opacity: 0,
+        y: -10,
+        transitionEnd: { display: "none" },
+        transition: { duration: 0.2 },
+    },
+};
+
 const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
     const isAuthenticated = variant === "authenticated";
     const router = useRouter();
     const [showSearch, setShowSearch] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
     const navigateWithSpinner = (path: string) => {
         setLoading(true);
@@ -69,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                         <button onClick={() => setShowSearch(prev => !prev)}>
                             {showSearch ? <X size={24} /> : <Search size={24} />}
                         </button>
-                        <Image src={profilePic} alt="User" width={40} height={40} className="rounded-full border" />
+                        <Image src={profilePic} alt="User" width={40} height={40} className="rounded-full border hover:cursor-pointer" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} />
                     </div>
                 )}
             </nav>
@@ -96,6 +112,28 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <motion.div
+                initial="closed"
+                animate={isOpen ? "open" : "closed"}
+                variants={dropdownVariants}
+                className="flex justify-center items-center flex-col gap-5 fixed top-[15%] left-[80%] -translate-x-1/2 -translate-y-10 bg-white p-5 rounded-xl hover:cursor-pointer w-[15%]"
+                onMouseEnter={()=>setIsOpen(true)}
+                onMouseLeave={()=>setIsOpen(false)}
+            >
+                <button className="outline-none bg-secondary p-2 rounded-xl w-full">
+                    Your Profile
+                </button>
+                <button onClick={() => navigateWithSpinner("/drafts")} className="outline-none bg-secondary p-2 rounded-xl w-full">
+                    My Drafts
+                </button>
+                <button className="outline-none bg-secondary p-2 rounded-xl w-full">
+                    My Posts
+                </button>
+                <button className="text-red-800 outline-none bg-secondary p-2 rounded-xl w-full">
+                    Logout
+                </button>
+            </motion.div>
         </>
     );
 };
