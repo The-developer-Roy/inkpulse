@@ -4,11 +4,18 @@ import React, { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
 
 type SearchBarProps = {
+    searchQuery: string;
     onSearch: (query: string) => void;
 };
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
-    const [query, setQuery] = useState("");
+export default function SearchBar({ searchQuery, onSearch }: SearchBarProps) {
+    const [query, setQuery] = useState(searchQuery || "");
+
+    // keep local input in sync with external "searchQuery"
+    useEffect(() => {
+      setQuery(searchQuery);
+    }, [searchQuery]);
+    
 
     useEffect(() => {
         const timeout = setTimeout(() => {

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PostCard from '@/components/PostCard';
 import SearchBar from '@/components/SearchBar';
+import { useSearchParams } from "next/navigation";
 
 type PostType = {
     _id: string;
@@ -19,7 +20,15 @@ type PostType = {
 
 export default function AllPostsClient({ posts }: { posts: PostType[] }) {
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("query")?.toLowerCase() || "";
+  
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+  
+  useEffect(()=>{
+    const query = searchParams.get("query")?.toLowerCase() || "";
+    setSearchQuery(query)
+  }, [searchParams]);
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchQuery) ||
@@ -31,7 +40,7 @@ export default function AllPostsClient({ posts }: { posts: PostType[] }) {
       <h1 className="text-4xl font-bold mb-6">All Posts</h1>
 
       <div className="p-4 space-y-6">
-        <SearchBar onSearch={setSearchQuery} />
+        <SearchBar searchQuery={searchQuery} onSearch={setSearchQuery} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
           {filteredPosts.length > 0 ? (
