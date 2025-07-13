@@ -8,6 +8,7 @@ import { Poppins } from 'next/font/google';
 import Navbar from './Navbar';
 import { useRouter } from 'next/navigation';
 import PostCard from './PostCard'; // ⬅ Import PostCard
+import { Clapperboard, Ellipsis, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 
 const dancingScript = Dancing_Script({
     weight: "400",
@@ -45,6 +46,16 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
     const [trendingPosts, setTrendingPosts] = useState<TrendingPost[]>([]);
     const router = useRouter();
 
+    const categories = [
+        { label: "Fantasy", icon: <Sparkles size={20} /> },
+        { label: "Mystery", icon: <VenetianMask size={20} /> },
+        { label: "Romance", icon: <Heart size={20} /> },
+        { label: "Action", icon: <Swords size={20} /> },
+        { label: "Sci-Fi", icon: <TestTubeDiagonal size={20} /> },
+        { label: "Drama", icon: <Clapperboard size={20} /> },
+        { label: "And More", icon: <Ellipsis size={20} /> },
+    ];
+
     const navigateWithSpinner = (path: string) => {
         setLoading(true);
         router.push(path);
@@ -66,7 +77,7 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
     }, []);
 
     return (
-        <main className={`custom-cursor min-h-screen w-full flex justify-center items-center flex-col overflow-x-hidden ${poppins.className}`}>
+        <main className={`custom-cursor min-h-screen w-full flex justify-center items-center flex-col overflow-x-hidden ${poppins.className} gap-5`}>
             {loading && <Spinner />}
             <Navbar variant="authenticated" setLoading={setLoading} profilePic={profilePic} />
 
@@ -82,11 +93,29 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {trendingPosts.length > 0 ? (
                         trendingPosts.map((post) => (
-                            <PostCard key={post._id} post={post} />
+                            <PostCard key={post._id} post={post} setLoading={setLoading}/>
                         ))
                     ) : (
                         <p className="text-center text-gray-500 col-span-full">No trending stories yet.</p>
                     )}
+                </div>
+            </section>
+            <section className='w-full flex justify-center items-center bg-dominant py-20 px-6 md:px-16 flex-col gap-5'>
+                <h1 className='text-5xl'>Explore Genres</h1>
+                <p className='text-gray-700'>Find stories that match your inerests from our diverse collection of genres.</p>
+                <div className='flex justify-center items-center gap-10 w-full flex-wrap'>
+                    {categories.map((category) => (
+                        <button
+                            key={category.label}
+                            onClick={() => navigateWithSpinner(`/post?query=${encodeURIComponent(category.label)}`)}
+                            className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[120px] hover:scale-105 transition duration-200'
+                        >
+                            <div className='rounded-full bg-background p-2'>
+                                {category.icon}
+                            </div>
+                            <span className='text-secondary'>{category.label}</span>
+                        </button>
+                    ))}
                 </div>
             </section>
         </main>

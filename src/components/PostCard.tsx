@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { convert } from 'html-to-text';
+import { useRouter } from 'next/navigation';
 
 interface PostCardProps {
   post: {
@@ -16,9 +17,17 @@ interface PostCardProps {
       profilePic?: string;
     };
   };
+  setLoading: (value: boolean) => void;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+const PostCard: React.FC<PostCardProps> = ({ post, setLoading }) => {
+  const router = useRouter();
+
+  const navigateWithSpinner = (path: string)=>{
+    setLoading(true);
+    router.push(path);
+  }
+
   const cleanContent = convert(post.content, {
     wordwrap: false,
     selectors: [
@@ -59,9 +68,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
       <div className="flex justify-between items-center text-sm text-gray-500">
         <span>{post.likes.length} {post.likes.length === 1 ? 'like' : 'likes'}</span>
-        <Link href={`/post/${post._id}`} className="text-blue-600 hover:underline">
+        <button onClick={()=>{navigateWithSpinner(`/post/${post._id}`)}} className="text-blue-600 hover:underline">
           Read more →
-        </Link>
+        </button>
       </div>
     </div>
   );

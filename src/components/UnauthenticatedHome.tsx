@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Navbar from './Navbar'
 import { Dancing_Script, Poppins } from 'next/font/google'
 import { TypeAnimation } from 'react-type-animation'
-import { Clapperboard, Ellipsis, Heart, Search, Sparkles, Star, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
+import { Clapperboard, Ellipsis, Heart, Sparkles, Star, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 import Image from 'next/image'
 import Footer from './Footer'
 import { useRouter } from 'next/navigation'
@@ -139,7 +139,7 @@ const UnauthenticatedHome = () => {
                 </div>
             </section>
             <section className='w-full flex justify-center items-center bg-dominant py-20 px-6 md:px-16 flex-col gap-5'>
-                <h1 className='text-5xl'>Explore Categories</h1>
+                <h1 className='text-5xl'>Explore Genres</h1>
                 <p className='text-gray-700'>Find stories that match your inerests from our diverse collection of genres.</p>
                 <div className='flex justify-center items-center gap-10 w-full'>
                     <div className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[14%]'>
