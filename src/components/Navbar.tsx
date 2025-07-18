@@ -7,6 +7,8 @@ import { Dancing_Script } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import UnderlineAnimation from "./UnderlineAnimation";
+import { Clapperboard, Ellipsis, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 
 const dancingScript = Dancing_Script({
     weight: "400",
@@ -40,6 +42,17 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
     const [showSearch, setShowSearch] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [genreIsOpen, setGenreIsOpen] = useState(false);
+
+    const categories = [
+        { label: "Fantasy", icon: <Sparkles size={20} /> },
+        { label: "Mystery", icon: <VenetianMask size={20} /> },
+        { label: "Romance", icon: <Heart size={20} /> },
+        { label: "Action", icon: <Swords size={20} /> },
+        { label: "Sci-Fi", icon: <TestTubeDiagonal size={20} /> },
+        { label: "Drama", icon: <Clapperboard size={20} /> },
+        { label: "And More", icon: <Ellipsis size={20} /> },
+    ];
 
     const navigateWithSpinner = (path: string) => {
         setLoading(true);
@@ -66,16 +79,30 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 <div className="flex gap-20 items-center text-2xl">
                     {isAuthenticated ? (
                         <>
-                            <button onClick={() => navigateWithSpinner("/")} className="hover:underline">Home</button>
-                            <button onClick={() => navigateWithSpinner("/post")} className="hover:underline">Stories</button>
-                            <button onClick={() => navigateWithSpinner("/categories")} className="hover:underline">Categories</button>
-                            <button onClick={() => navigateWithSpinner("/about")} className="hover:underline">About Us</button>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/")}>Home</button>
+                            </UnderlineAnimation>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/post")}>Stories</button>
+                            </UnderlineAnimation>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/categories")} onMouseEnter={() => setGenreIsOpen(true)} onMouseLeave={() => setGenreIsOpen(false)}>Genres</button>
+                            </UnderlineAnimation>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/About")}>About Us</button>
+                            </UnderlineAnimation>
                         </>
                     ) : (
                         <>
-                            <button onClick={() => navigateWithSpinner("/about")} className="hover:underline">About Us</button>
-                            <button onClick={() => navigateWithSpinner("/auth/signin")} className="hover:underline">Login</button>
-                            <button onClick={() => navigateWithSpinner("/auth/register")} className="hover:underline">Signup</button>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/About")}>About Us</button>
+                            </UnderlineAnimation>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/auth/signin")}>Login</button>
+                            </UnderlineAnimation>
+                            <UnderlineAnimation animationDuration={0.1}>
+                                <button onClick={() => navigateWithSpinner("/auth/register")}>Signup</button>
+                            </UnderlineAnimation>
                         </>
                     )}
                 </div>
@@ -118,8 +145,8 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 animate={isOpen ? "open" : "closed"}
                 variants={dropdownVariants}
                 className="flex justify-center items-center flex-col gap-5 fixed top-[15%] left-[80%] -translate-x-1/2 -translate-y-10 bg-white p-5 rounded-xl hover:cursor-pointer w-[15%]"
-                onMouseEnter={()=>setIsOpen(true)}
-                onMouseLeave={()=>setIsOpen(false)}
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
             >
                 <button className="outline-none bg-secondary p-2 rounded-xl w-full">
                     Your Profile
@@ -133,6 +160,30 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 <button className="text-red-800 outline-none bg-secondary p-2 rounded-xl w-full">
                     Logout
                 </button>
+            </motion.div>
+
+            <motion.div
+                initial="closed"
+                animate={genreIsOpen ? "open" : "closed"}
+                variants={dropdownVariants}
+                className="flex justify-center items-center gap-5 fixed top-[15%] left-[30%] -translate-x-1/2 -translate-y-10 bg-dominant p-5 rounded-xl hover:cursor-pointer w-[50%]"
+                onMouseEnter={() => setGenreIsOpen(true)}
+                onMouseLeave={() => setGenreIsOpen(false)}
+            >
+                <div className='flex justify-center items-center gap-10 w-full flex-wrap'>
+                    {categories.map((category) => (
+                        <button
+                            key={category.label}
+                            onClick={() => navigateWithSpinner(`/post?query=${encodeURIComponent(category.label)}`)}
+                            className='bg-primary flex flex-col justify-center items-center gap-3 rounded-xl p-4 w-[120px] hover:scale-105 transition duration-200'
+                        >
+                            <div className='rounded-full bg-background p-2'>
+                                {category.icon}
+                            </div>
+                            <span className='text-secondary'>{category.label}</span>
+                        </button>
+                    ))}
+                </div>
             </motion.div>
         </>
     );
