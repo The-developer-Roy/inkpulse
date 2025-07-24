@@ -148,13 +148,13 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
             >
-                <button className="outline-none bg-secondary p-2 rounded-xl w-full">
+                <button onClick={() => navigateWithSpinner("/your-profile")} className="outline-none bg-secondary p-2 rounded-xl w-full">
                     Your Profile
                 </button>
                 <button onClick={() => navigateWithSpinner("/drafts")} className="outline-none bg-secondary p-2 rounded-xl w-full">
                     My Drafts
                 </button>
-                <button className="outline-none bg-secondary p-2 rounded-xl w-full">
+                <button onClick={() => navigateWithSpinner("/my-posts")} className="outline-none bg-secondary p-2 rounded-xl w-full">
                     My Posts
                 </button>
                 <button className="text-red-800 outline-none bg-secondary p-2 rounded-xl w-full">

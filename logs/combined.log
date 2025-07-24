@@ -1102,3 +1102,32 @@
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-14 13:17:10"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-17 14:52:49"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-18 13:20:37"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-19 13:24:44"}
+{"level":"info","message":"Received a DELETE request from the endpoint: \"api/post\"","timestamp":"2025-07-19 15:02:18"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-19 15:02:18"}
+{"level":"info","message":"Post with ID: \"6870ebe133b057c58f3fe0eb\" deleted successfully","timestamp":"2025-07-19 15:02:19"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-19 16:09:38"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-19 21:36:47"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-19 23:48:47"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-19 23:48:48"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-20 02:56:33"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-20 02:56:36"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-20 22:25:06"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-20 23:24:39"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-20 23:24:39"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-20 23:25:11"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-20 23:25:12"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-20 23:27:56"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-20 23:27:56"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-20 23:41:28"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-20 23:41:37"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-20 23:41:38"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-24 22:46:25"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-24 22:47:03"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-24 22:47:04"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-24 23:02:11"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-24 23:02:11"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-24 23:10:24"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-24 23:10:25"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-24 23:24:24"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-24 23:24:26"}
