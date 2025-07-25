@@ -69,7 +69,10 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
     };
 
     const logout = async ()=>{
+        setLoading(true);
         await fetch("/api/auth/logout", { method: "POST" });
+        router.refresh(); // Refresh the server components
+        router.push("/");
     }
 
     return (

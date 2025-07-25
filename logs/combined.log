@@ -1136,3 +1136,4 @@
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-25 21:51:09"}
 {"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-25 21:52:47"}
 {"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-25 21:52:49"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-25 22:53:08"}
