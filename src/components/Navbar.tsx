@@ -68,6 +68,10 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
         setSearchTerm("");
     };
 
+    const logout = async ()=>{
+        await fetch("/api/auth/logout", { method: "POST" });
+    }
+
     return (
         <>
             <nav className={`w-[90%] flex items-center justify-between px-6 py-4 bg-secondary shadow-md fixed top-5 rounded-xl z-50 ${dancingScript.className}`}>
@@ -157,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 <button onClick={() => navigateWithSpinner("/my-posts")} className="outline-none bg-secondary p-2 rounded-xl w-full">
                     My Posts
                 </button>
-                <button className="text-red-800 outline-none bg-secondary p-2 rounded-xl w-full">
+                <button onClick={logout} className="text-red-800 outline-none bg-secondary p-2 rounded-xl w-full">
                     Logout
                 </button>
             </motion.div>
