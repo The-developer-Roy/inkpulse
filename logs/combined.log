@@ -1137,3 +1137,24 @@
 {"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-25 21:52:47"}
 {"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-25 21:52:49"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-25 22:53:08"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-26 00:06:31"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:02"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:03"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:29"}
+{"level":"info","message":"successfully created a comment","timestamp":"2025-07-26 00:07:29"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:29"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:39"}
+{"level":"info","message":"A comment with ID: 6883cee91c31a3784105b80a deleted successfully","timestamp":"2025-07-26 00:07:39"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:07:45"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:08:19"}
+{"level":"info","message":"successfully created a comment","timestamp":"2025-07-26 00:08:19"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:08:19"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:08:27"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:08:30"}
+{"level":"info","message":"A comment with ID: 6883cf1b1c31a3784105b813 deleted successfully","timestamp":"2025-07-26 00:08:30"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:08:33"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:09:31"}
+{"level":"info","message":"successfully created a comment","timestamp":"2025-07-26 00:09:31"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:09:31"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:10:24"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:10:25"}

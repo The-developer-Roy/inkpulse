@@ -2,12 +2,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import connectMongo from "@/lib/mongoose";
-import User from "@/app/models/User";
 import Post from "@/app/models/Post";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/config/auth.config";
 import LikeButton from "@/components/LikeButton";
+import CommentSection from "@/components/CommentSection";
 
 interface Params {
   params: { id: string };
@@ -58,6 +58,7 @@ export default async function PostPage({ params }: Params) {
       />
 
       <LikeButton postId={post._id.toString()} initialLiked={isLiked} initialLikesCount={post.likes.length}/>
+      <CommentSection postId={post._id.toString()} currentUserId={currentUserId} />
     </div>
   );
 }
