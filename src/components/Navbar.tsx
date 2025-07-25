@@ -77,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
 
     return (
         <>
-            <nav className={`w-[90%] flex items-center justify-between px-6 py-4 bg-secondary shadow-md fixed top-5 rounded-xl z-50 ${dancingScript.className}`}>
+            <nav className={`w-[90%] flex items-center justify-between px-6 py-4 bg-secondary shadow-md fixed top-5 rounded-3xl z-50 ${dancingScript.className}`}>
                 <Link href="/" className="flex items-center text-3xl gap-4">
                     <Image src={"/logo.png"} alt="logo" width={32} height={32} />
                     <span>Inkpulse</span>
