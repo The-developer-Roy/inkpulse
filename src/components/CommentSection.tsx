@@ -2,11 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Comment = {
     _id: string;
     content: string;
     userId: {
+        _id: string;
         name: string;
         email: string;
     };
@@ -60,8 +62,10 @@ export default function CommentSection({ postId, currentUserId }: CommentSection
             });
 
             if (res.ok) {
+                const data = await res.json();
                 setNewComment("");
-                fetchComments(); // Refresh comments
+                // Add new comment at the top with animation
+                setComments((prev) => [data.data, ...prev]);
             } else {
                 const data = await res.json();
                 alert(data.message || "Failed to post comment");
@@ -114,25 +118,34 @@ export default function CommentSection({ postId, currentUserId }: CommentSection
             {/* Display Comments */}
             {comments.length > 0 ? (
                 <ul className="space-y-3">
-                    {comments.map((comment) => (
-                        <li key={comment._id} className="flex justify-between items-center border-b pb-2">
-                            <div>
-                                <p className="font-semibold">{comment.userId?.name || "Unknown"}</p>
-                                <p className="text-gray-700">{comment.content}</p>
-                                <small className="text-gray-400 text-xs">
-                                    {new Date(comment.createdAt).toLocaleString()}
-                                </small>
-                            </div>
-                            {comment.userId && currentUserId === (comment.userId as any)._id && (
-                                <button
-                                    onClick={() => handleDeleteComment(comment._id)}
-                                    className="text-red-500 hover:text-red-700"
-                                >
-                                    <X size={16} />
-                                </button>
-                            )}
-                        </li>
-                    ))}
+                    <AnimatePresence>
+                        {comments.map((comment) => (
+                            <motion.li
+                                key={comment._id}
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 30 }}
+                                transition={{ duration: 0.3 }}
+                                className="flex justify-between items-center border-b pb-2"
+                            >
+                                <div>
+                                    <p className="font-semibold">{comment.userId?.name || "Unknown"}</p>
+                                    <p className="text-gray-700">{comment.content}</p>
+                                    <small className="text-gray-400 text-xs">
+                                        {new Date(comment.createdAt).toLocaleString()}
+                                    </small>
+                                </div>
+                                {comment.userId && currentUserId === comment.userId._id && (
+                                    <button
+                                        onClick={() => handleDeleteComment(comment._id)}
+                                        className="text-red-500 hover:text-red-700"
+                                    >
+                                        <X size={16} />
+                                    </button>
+                                )}
+                            </motion.li>
+                        ))}
+                    </AnimatePresence>
                 </ul>
             ) : (
                 <p className="text-gray-500 text-sm">No comments yet. Be the first to comment!</p>

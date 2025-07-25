@@ -1158,3 +1158,11 @@
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:09:31"}
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:10:24"}
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 00:10:25"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-26 01:32:14"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:33:46"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:33:47"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:34:39"}
+{"level":"info","message":"successfully created a comment","timestamp":"2025-07-26 01:34:39"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:51:25"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:51:49"}
+{"level":"info","message":"A comment with ID: 6883e357b37d11f83bbe5169 deleted successfully","timestamp":"2025-07-26 01:51:50"}
