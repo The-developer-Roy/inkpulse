@@ -26,6 +26,16 @@ const YourProfileClient: React.FC<Props> = ({ name, email, profilePic, niche, bi
     const [updatedNiche, setUpdatedNiche] = useState(niche);
     const [updatedBio, setUpdatedBio] = useState(bio);
 
+    const handleUpdateSuccess = (updatedData: {
+        name: string;
+        niche: string;
+        bio: string;
+    }) => {
+        setUpdatedName(updatedData.name);
+        setUpdatedNiche(updatedData.niche);
+        setUpdatedBio(updatedData.bio);
+    };
+
     // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -276,11 +286,7 @@ const YourProfileClient: React.FC<Props> = ({ name, email, profilePic, niche, bi
                 currentNiche={updatedNiche}
                 currentBio={updatedBio}
                 email={email}
-                onUpdateSuccess={()=>{
-                    setUpdatedName(updatedName);
-                    setUpdatedNiche(updatedNiche || "");
-                    setUpdatedBio(updatedBio || "");
-                }}
+                onUpdateSuccess={handleUpdateSuccess}
             />
         </div>
     );

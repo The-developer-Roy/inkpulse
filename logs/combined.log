@@ -1133,3 +1133,6 @@
 {"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-24 23:24:26"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-24 23:41:56"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-25 20:42:54"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-25 21:51:09"}
+{"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-25 21:52:47"}
+{"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-25 21:52:49"}

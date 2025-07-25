@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 type EditProfileModalProps = {
@@ -10,7 +10,11 @@ type EditProfileModalProps = {
     currentNiche?: string;
     currentBio?: string;
     email: string;
-    onUpdateSuccess?: () => void;
+    onUpdateSuccess?: (updatedData: {
+        name: string;
+        niche: string;
+        bio: string;
+    }) => void;
 };
 
 export default function EditProfileModal({
@@ -45,7 +49,11 @@ export default function EditProfileModal({
 
             const data = await res.json();
             if (res.ok) {
-                onUpdateSuccess?.();
+                onUpdateSuccess?.({
+                    name: updatedName,
+                    niche: updatedNiche,
+                    bio: updatedBio,
+                });
                 onClose();
             } else {
                 alert(data.message || "Update failed");
@@ -56,6 +64,13 @@ export default function EditProfileModal({
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+      setUpdatedName(currentName);
+      setUpdatedNiche(currentNiche);
+      setUpdatedBio(currentBio);
+    }, [currentName, currentNiche, currentBio, isOpen])
+    
 
     if (!isOpen) return null;
 
