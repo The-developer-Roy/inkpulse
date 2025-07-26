@@ -1167,3 +1167,4 @@
 {"level":"info","message":"Received a POST request from the endpoint: \"api/comment\"","timestamp":"2025-07-26 01:51:49"}
 {"level":"info","message":"A comment with ID: 6883e357b37d11f83bbe5169 deleted successfully","timestamp":"2025-07-26 01:51:50"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-26 02:08:00"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-26 21:46:15"}

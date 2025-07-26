@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 type EditProfileModalProps = {
     isOpen: boolean;
@@ -32,6 +33,7 @@ export default function EditProfileModal({
     const [loading, setLoading] = useState(false);
 
     const handleUpdate = async (e: React.FormEvent) => {
+        const loadingToast = toast.loading("Saving...");
         e.preventDefault();
         setLoading(true);
 
@@ -54,9 +56,10 @@ export default function EditProfileModal({
                     niche: updatedNiche,
                     bio: updatedBio,
                 });
+                toast.success("Saved new user details", { id: loadingToast });
                 onClose();
             } else {
-                alert(data.message || "Update failed");
+                toast.error("Saving failed!", { id: loadingToast });
             }
         } catch (err) {
             alert("Something went wrong.");
