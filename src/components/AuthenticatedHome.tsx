@@ -110,7 +110,7 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
                 <div className='absolute right-full top-1/2 transform -translate-y-1/2 mr-2 w-max px-2 py-1 text-sm text-white bg-gray-700 rounded shadow-lg hidden group-hover:block'>
                     Create a New Story
                 </div>
-                <Image src={"/pen-2.svg"} alt='pen' width={40} height={40} />
+                <img src={"/pen-2.svg"} alt='pen' className='lg:h-10 lg:w-10 lg:block hidden' />
             </button>
 
             <section className="w-full max-w-5xl px-4 mt-32">
@@ -148,7 +148,7 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
                     ))}
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </main>
     );
 };

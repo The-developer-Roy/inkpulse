@@ -1250,3 +1250,10 @@
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 14:57:16"}
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 14:57:18"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 15:34:05"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 21:13:12"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 21:52:02"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 22:11:04"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:11:46"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:11:47"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:13:04"}
+{"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:13:05"}

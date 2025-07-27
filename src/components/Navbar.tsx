@@ -86,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
         setMobileMenuOpen(false);
     };
 
-    const logout = async () => {
+    const logout = async ()=>{
         setLoading(true);
         setMobileMenuOpen(false);
         await fetch("/api/auth/logout", { method: "POST" });
@@ -113,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                                 <button onClick={() => navigateWithSpinner("/post")}>Stories</button>
                             </UnderlineAnimation>
                             <UnderlineAnimation animationDuration={0.1}>
-                                <button onClick={() => navigateWithSpinner("/categories")} onMouseEnter={() => setGenreIsOpen(true)} onMouseLeave={() => setGenreIsOpen(false)}>Genres</button>
+                                <button onClick={() => navigateWithSpinner("/genres")} onMouseEnter={() => setGenreIsOpen(true)} onMouseLeave={() => setGenreIsOpen(false)}>Genres</button>
                             </UnderlineAnimation>
                             <UnderlineAnimation animationDuration={0.1}>
                                 <button onClick={() => navigateWithSpinner("/About")}>About Us</button>
@@ -137,25 +137,25 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                 {/* Right side icons */}
                 <div className="flex items-center gap-2 sm:gap-4">
                     {isAuthenticated && (
-                        <button onClick={() => setShowSearch(prev => !prev)} className="lg:block">
+                        <button onClick={() => setShowSearch(prev => !prev)} className="hidden lg:block">
                             {showSearch ? <X size={24} /> : <Search size={24} />}
                         </button>
                     )}
-
+                    
                     {isAuthenticated && profilePic && (
-                        <Image
-                            src={profilePic}
-                            alt="User"
-                            width={40}
-                            height={40}
-                            className="hidden lg:block rounded-full border hover:cursor-pointer"
-                            onMouseEnter={() => setIsOpen(true)}
-                            onMouseLeave={() => setIsOpen(false)}
+                        <Image 
+                            src={profilePic} 
+                            alt="User" 
+                            width={40} 
+                            height={40} 
+                            className="hidden lg:block rounded-full border hover:cursor-pointer" 
+                            onMouseEnter={() => setIsOpen(true)} 
+                            onMouseLeave={() => setIsOpen(false)} 
                         />
                     )}
-
+                    
                     {/* Mobile menu button */}
-                    <button
+                    <button 
                         onClick={() => setMobileMenuOpen(prev => !prev)}
                         className="lg:hidden"
                     >
@@ -172,7 +172,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                         animate="open"
                         exit="closed"
                         variants={mobileMenuVariants}
-                        className={`lg:hidden fixed top-[100px] right-[5%] w-[90%] max-w-sm bg-secondary shadow-lg rounded-2xl z-40 flex-col p-6 ${dancingScript.className}`}
+                        className={`lg:hidden fixed top-[100px] right-[5%] w-[90%] max-w-sm bg-secondary shadow-lg rounded-2xl z-40 flex-col p-6 max-h-[calc(100vh-120px)] overflow-y-auto ${dancingScript.className}`}
                     >
                         {/* Mobile Search */}
                         {isAuthenticated && (
@@ -193,9 +193,9 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                                 <>
                                     <button onClick={() => navigateWithSpinner("/")} className="text-left py-2 border-b border-gray-200">Home</button>
                                     <button onClick={() => navigateWithSpinner("/post")} className="text-left py-2 border-b border-gray-200">Stories</button>
-                                    <button onClick={() => navigateWithSpinner("/categories")} className="text-left py-2 border-b border-gray-200">Genres</button>
+                                    <button onClick={() => navigateWithSpinner("/genres")} className="text-left py-2 border-b border-gray-200">Genres</button>
                                     <button onClick={() => navigateWithSpinner("/About")} className="text-left py-2 border-b border-gray-200">About Us</button>
-
+                                    
                                     {/* Mobile Profile Menu */}
                                     {profilePic && (
                                         <>
