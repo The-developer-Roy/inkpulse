@@ -135,7 +135,7 @@ export default function EditorClient({ user, existingPost }: { user: UserProfile
                     setShowThumbnailModal(true);
                 }
             } else {
-                toast.error(data.message || status === "published" ? "Failed to Save draft..." : "Failed to publish...", { id: loadingToast });
+                toast.error(data.message || status === "published" ? "Failed to Publish..." : "Failed to save draft...", { id: loadingToast });
             }
         } catch (err) {
             console.error(err);

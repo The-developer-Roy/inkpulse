@@ -8,7 +8,9 @@ import { Poppins } from 'next/font/google';
 import Navbar from './Navbar';
 import { useRouter } from 'next/navigation';
 import PostCard from './PostCard'; // ⬅ Import PostCard
+import { motion } from 'framer-motion';
 import { Clapperboard, Ellipsis, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
+import Footer from './Footer';
 
 const dancingScript = Dancing_Script({
     weight: "400",
@@ -41,9 +43,28 @@ interface TrendingPost {
     };
 }
 
+// Skeleton Component for Loading
+const TrendingPostSkeleton = () => {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+            className="bg-gray-200 rounded-lg shadow-md overflow-hidden animate-pulse"
+        >
+            <div className="w-full h-40 bg-gray-300"></div>
+            <div className="p-4">
+                <div className="h-5 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+            </div>
+        </motion.div>
+    );
+};
+
 const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
     const [loading, setLoading] = useState(false);
     const [trendingPosts, setTrendingPosts] = useState<TrendingPost[]>([]);
+    const [loadingTrending, setLoadingTrending] = useState(false);
     const router = useRouter();
 
     const categories = [
@@ -64,6 +85,7 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
     useEffect(() => {
         const fetchTrendingPosts = async () => {
             try {
+                setLoadingTrending(true);
                 const res = await fetch("/api/post/trending");
                 if (res.ok) {
                     const data = await res.json();
@@ -71,6 +93,9 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
                 }
             } catch (err) {
                 console.error("Failed to fetch trending posts", err);
+            }
+            finally {
+                setLoadingTrending(false);
             }
         };
         fetchTrendingPosts();
@@ -91,9 +116,14 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
             <section className="w-full max-w-5xl px-4 mt-32">
                 <h2 className="text-3xl font-bold mb-6 text-center">🔥 Trending Stories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {trendingPosts.length > 0 ? (
+                    {loadingTrending ? (
+                        // Render 3 skeleton placeholders
+                        Array.from({ length: 3 }).map((_, idx) => (
+                            <TrendingPostSkeleton key={idx} />
+                        ))
+                    ) : trendingPosts.length > 0 ? (
                         trendingPosts.map((post) => (
-                            <PostCard key={post._id} post={post} setLoading={setLoading}/>
+                            <PostCard key={post._id} post={post} setLoading={setLoading} />
                         ))
                     ) : (
                         <p className="text-center text-gray-500 col-span-full">No trending stories yet.</p>
@@ -118,6 +148,7 @@ const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
                     ))}
                 </div>
             </section>
+            <Footer/>
         </main>
     );
 };

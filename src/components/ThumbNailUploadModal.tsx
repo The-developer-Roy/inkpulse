@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 interface ThumbnailUploadModalProps {
   postId: string;
@@ -64,33 +66,69 @@ const ThumbnailUploadModal: React.FC<ThumbnailUploadModalProps> = ({ postId, onC
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
-      <div className="bg-white dark:bg-zinc-900 p-6 rounded-2xl w-[90vw] max-w-md shadow-xl space-y-4">
-        <h2 className="text-lg font-semibold">Upload a Thumbnail</h2>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          className="w-full"
-        />
-        <div className="flex gap-2 justify-end">
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.8, opacity: 0, y: 50 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          className="relative bg-white dark:bg-zinc-900 p-6 rounded-2xl w-[90vw] max-w-md shadow-2xl space-y-5"
+        >
+          {/* Close Button */}
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-md bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 transition"
-            disabled={uploading}
+            className="absolute top-3 right-3 p-1 rounded-full bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 transition"
+            aria-label="Close"
           >
-            Cancel
+            <X className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           </button>
-          <button
-            onClick={handleUpload}
-            className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
-            disabled={uploading}
-          >
-            {uploading ? 'Uploading...' : 'Upload'}
-          </button>
-        </div>
-      </div>
-    </div>
+
+          {/* Modal Title */}
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+            Upload a Thumbnail
+          </h2>
+
+          {/* File Input */}
+          <label className="block w-full">
+            <div className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 cursor-pointer hover:border-blue-500 transition text-center">
+              <p className="text-gray-500 text-sm">
+                {selectedFile ? selectedFile.name : 'Click or drag & drop to select an image'}
+              </p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </div>
+          </label>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3 justify-end">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 transition text-sm font-medium"
+              disabled={uploading}
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleUpload}
+              className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition text-sm font-medium disabled:opacity-50"
+              disabled={uploading}
+            >
+              {uploading ? 'Uploading...' : 'Upload'}
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

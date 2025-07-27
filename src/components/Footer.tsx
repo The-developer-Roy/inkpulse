@@ -36,7 +36,7 @@ const Footer = () => {
                     <Link href={"https://www.instagram.com/the_1_roy"} className='p-2 rounded-full bg-dominant'>
                         <Instagram size={20} />
                     </Link>
-                    <Link href={"https://www.x.com"} className='p-2 rounded-full bg-dominant'>
+                    <Link href={"https://www.x.com/roysubhadeep747"} className='p-2 rounded-full bg-dominant'>
                         <Twitter size={20} />
                     </Link>
                     <Link href={"https://www.facebook.com"} className='p-2 rounded-full bg-dominant'>
