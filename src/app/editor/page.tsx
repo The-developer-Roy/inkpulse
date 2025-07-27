@@ -18,7 +18,7 @@ export default async function EditorPage({ searchParams }: { searchParams: { id?
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
-        return <div>Post Editor</div>;
+        return <div>Please Login to use the editor</div>;
     }
 
     await connectMongo();
