@@ -27,66 +27,80 @@ const Footer = () => {
     }
 
     return (
-        <footer className={`w-full flex justify-center items-start bg-secondary py-10 px-6 md:px-16 gap-5 ${poppins.className}`}>
-            {loading && (<Spinner/>)}
-            <div className='w-[25%] p-5 flex flex-col justify-center items-start gap-5'>
-                <h1 className={`text-3xl ${dancingScript.className} text-black`}>Ink<span className='text-primary'>pulse</span></h1>
-                <p className='text-gray-700'>A platform where stories come alive and writers thrive.</p>
+        <footer className={`w-full flex flex-col lg:flex-row justify-center items-start bg-secondary py-8 lg:py-10 px-4 sm:px-6 md:px-16 gap-8 lg:gap-5 ${poppins.className}`}>
+            {loading && (<Spinner />)}
+
+            {/* Brand Section */}
+            <div className='w-full lg:w-[25%] p-3 lg:p-5 flex flex-col justify-center items-center lg:items-start gap-4 lg:gap-5'>
+                <h1 className={`text-2xl sm:text-3xl ${dancingScript.className} text-black text-center lg:text-left`}>Ink<span className='text-primary'>pulse</span></h1>
+                <p className='text-gray-700 text-center lg:text-left text-sm sm:text-base'>A platform where stories come alive and writers thrive.</p>
                 <div className='flex justify-center items-center gap-3'>
-                    <Link href={"https://www.instagram.com/the_1_roy"} className='p-2 rounded-full bg-dominant'>
+                    <Link href={"https://www.instagram.com/the_1_roy"} className='p-2 rounded-full bg-dominant hover:scale-110 transition-transform duration-200'>
                         <Instagram size={20} />
                     </Link>
-                    <Link href={"https://www.x.com/roysubhadeep747"} className='p-2 rounded-full bg-dominant'>
+                    <Link href={"https://www.x.com/roysubhadeep747"} className='p-2 rounded-full bg-dominant hover:scale-110 transition-transform duration-200'>
                         <Twitter size={20} />
                     </Link>
-                    <Link href={"https://www.facebook.com"} className='p-2 rounded-full bg-dominant'>
+                    <Link href={"https://www.facebook.com"} className='p-2 rounded-full bg-dominant hover:scale-110 transition-transform duration-200'>
                         <Facebook size={20} />
                     </Link>
                 </div>
             </div>
-            <div className='w-[25%] p-5 flex flex-col justify-center items-start gap-5'>
-                <h1 className="text-2xl font-bold">Quick Links</h1>
-                <button onClick={()=>{navigateWithSpinner("/")}}>
-                    Home
-                </button>
-                <button onClick={()=>{navigateWithSpinner("/about")}}>
-                    About Us
-                </button>
-                <button onClick={()=>{navigateWithSpinner("contact")}}>
-                    Contact
-                </button>
-            </div>
-            <div className='w-[25%] p-5 flex flex-col justify-center items-start gap-5'>
-                <h1 className="text-2xl font-bold">Resources</h1>
-                <button onClick={()=>{navigateWithSpinner("/tips")}}>
-                    Writing Tips
-                </button>
-                <Link href={"/publishing"}>
-                    Publishing Guide
-                </Link>
-                <button onClick={()=>{navigateWithSpinner("/guidelines")}}>
-                    Community Guidelines
-                </button>
-                <button onClick={()=>{navigateWithSpinner("/faqs")}}>
-                    FAQs
-                </button>
-                <button onClick={()=>{navigateWithSpinner("/support")}}>
-                    Support
-                </button>
-            </div>
-            <div className='w-[25%] p-5 flex flex-col justify-center items-start gap-5'>
-                <h1 className="text-2xl font-bold">Contact Us</h1>
-                <div className='flex justify-center items-center gap-2'>
-                    <Mail size={20}/>
-                    roysubhadeep747@gmail.com
+
+            {/* Quick Links Section */}
+            <div className='w-full lg:w-[25%] p-3 lg:p-5 flex flex-col justify-center items-center lg:items-start gap-4 lg:gap-5'>
+                <h1 className="text-xl sm:text-2xl font-bold text-center lg:text-left">Quick Links</h1>
+                <div className='flex flex-col gap-3 items-center lg:items-start'>
+                    <button onClick={() => { navigateWithSpinner("/") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Home
+                    </button>
+                    <button onClick={() => { navigateWithSpinner("/about") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        About Us
+                    </button>
+                    <button onClick={() => { navigateWithSpinner("contact") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Contact
+                    </button>
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <MapPin size={20}/>
-                    SP Road Ward - 3, Lala
+            </div>
+
+            {/* Resources Section */}
+            <div className='w-full lg:w-[25%] p-3 lg:p-5 flex flex-col justify-center items-center lg:items-start gap-4 lg:gap-5'>
+                <h1 className="text-xl sm:text-2xl font-bold text-center lg:text-left">Resources</h1>
+                <div className='flex flex-col gap-3 items-center lg:items-start'>
+                    <button onClick={() => { navigateWithSpinner("/tips") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Writing Tips
+                    </button>
+                    <Link href={"/publishing"} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Publishing Guide
+                    </Link>
+                    <button onClick={() => { navigateWithSpinner("/guidelines") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Community Guidelines
+                    </button>
+                    <button onClick={() => { navigateWithSpinner("/faqs") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        FAQs
+                    </button>
+                    <button onClick={() => { navigateWithSpinner("/support") }} className='hover:text-primary transition-colors duration-200 text-sm sm:text-base'>
+                        Support
+                    </button>
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <Phone size={20}/>
-                    +918011758618
+            </div>
+
+            {/* Contact Section */}
+            <div className='w-full lg:w-[25%] p-3 lg:p-5 flex flex-col justify-center items-center lg:items-start gap-4 lg:gap-5'>
+                <h1 className="text-xl sm:text-2xl font-bold text-center lg:text-left">Contact Us</h1>
+                <div className='flex flex-col gap-3 items-center lg:items-start'>
+                    <div className='flex justify-center lg:justify-start items-center gap-2 text-sm sm:text-base'>
+                        <Mail size={18} className='flex-shrink-0' />
+                        <span className='break-all text-center lg:text-left'>roysubhadeep747@gmail.com</span>
+                    </div>
+                    <div className='flex justify-center lg:justify-start items-center gap-2 text-sm sm:text-base'>
+                        <MapPin size={18} className='flex-shrink-0' />
+                        <span className='text-center lg:text-left'>SP Road Ward - 3, Lala</span>
+                    </div>
+                    <div className='flex justify-center lg:justify-start items-center gap-2 text-sm sm:text-base'>
+                        <Phone size={18} className='flex-shrink-0' />
+                        <span>+918011758618</span>
+                    </div>
                 </div>
             </div>
         </footer >
