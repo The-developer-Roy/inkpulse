@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Spinner from "@/components/Spinner";
-import { Clapperboard, Ellipsis, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
+import { Clapperboard, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 
 
 const genres = () => {
@@ -17,7 +17,6 @@ const genres = () => {
         { label: "Action", icon: <Swords size={20} /> },
         { label: "Sci-Fi", icon: <TestTubeDiagonal size={20} /> },
         { label: "Drama", icon: <Clapperboard size={20} /> },
-        { label: "And More", icon: <Ellipsis size={20} /> },
     ];
 
     const navigateWithSpinner = (path: string) => {
@@ -26,7 +25,7 @@ const genres = () => {
     };
 
     return (
-        <main>
+        <main className="flex justify-center items-center h-screen w-screen">
             {loading && <Spinner />}
             <div className='flex justify-center items-center gap-10 w-full flex-wrap'>
                 {categories.map((category) => (

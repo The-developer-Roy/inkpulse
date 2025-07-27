@@ -67,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
         { label: "Action", icon: <Swords size={20} /> },
         { label: "Sci-Fi", icon: <TestTubeDiagonal size={20} /> },
         { label: "Drama", icon: <Clapperboard size={20} /> },
-        { label: "And More", icon: <Ellipsis size={20} /> },
+        { label: "genres", icon: <Ellipsis size={20} /> },
     ];
 
     const navigateWithSpinner = (path: string) => {
@@ -86,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
         setMobileMenuOpen(false);
     };
 
-    const logout = async ()=>{
+    const logout = async () => {
         setLoading(true);
         setMobileMenuOpen(false);
         await fetch("/api/auth/logout", { method: "POST" });
@@ -141,21 +141,21 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                             {showSearch ? <X size={24} /> : <Search size={24} />}
                         </button>
                     )}
-                    
+
                     {isAuthenticated && profilePic && (
-                        <Image 
-                            src={profilePic} 
-                            alt="User" 
-                            width={40} 
-                            height={40} 
-                            className="hidden lg:block rounded-full border hover:cursor-pointer" 
-                            onMouseEnter={() => setIsOpen(true)} 
-                            onMouseLeave={() => setIsOpen(false)} 
+                        <Image
+                            src={profilePic}
+                            alt="User"
+                            width={40}
+                            height={40}
+                            className="hidden lg:block rounded-full border hover:cursor-pointer"
+                            onMouseEnter={() => setIsOpen(true)}
+                            onMouseLeave={() => setIsOpen(false)}
                         />
                     )}
-                    
+
                     {/* Mobile menu button */}
-                    <button 
+                    <button
                         onClick={() => setMobileMenuOpen(prev => !prev)}
                         className="lg:hidden"
                     >
@@ -195,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                                     <button onClick={() => navigateWithSpinner("/post")} className="text-left py-2 border-b border-gray-200">Stories</button>
                                     <button onClick={() => navigateWithSpinner("/genres")} className="text-left py-2 border-b border-gray-200">Genres</button>
                                     <button onClick={() => navigateWithSpinner("/About")} className="text-left py-2 border-b border-gray-200">About Us</button>
-                                    
+
                                     {/* Mobile Profile Menu */}
                                     {profilePic && (
                                         <>
@@ -219,26 +219,7 @@ const Navbar: React.FC<NavbarProps> = ({ variant, profilePic, setLoading }) => {
                             )}
                         </div>
 
-                        {/* Mobile Categories */}
-                        {isAuthenticated && (
-                            <div className="mt-6">
-                                <h3 className="text-lg font-semibold mb-4">Genres</h3>
-                                <div className="grid grid-cols-2 gap-3">
-                                    {categories.map((category) => (
-                                        <button
-                                            key={category.label}
-                                            onClick={() => navigateWithSpinner(`/post?query=${encodeURIComponent(category.label)}`)}
-                                            className="bg-primary flex flex-col justify-center items-center gap-2 rounded-xl p-3 hover:scale-105 transition duration-200"
-                                        >
-                                            <div className="rounded-full bg-background p-2">
-                                                {category.icon}
-                                            </div>
-                                            <span className="text-secondary text-sm">{category.label}</span>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+
                     </motion.div>
                 )}
             </AnimatePresence>

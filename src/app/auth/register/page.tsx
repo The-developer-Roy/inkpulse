@@ -46,7 +46,7 @@ const SignUpPage = () => {
         } catch (error) {
             console.error("Registration error:", error);
             toast.error("Signup failed. Please try again.", { id: loadingToast });
-        } finally{
+        } finally {
             setLoading(false);
         }
     };
@@ -57,9 +57,11 @@ const SignUpPage = () => {
     }
 
     return (
-        <div className={`bg-dominant h-[90%] w-[90%] flex justify-center items-center rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-5`}>
-            {loading && (<Spinner/>)}
-            <div className="w-[50%] h-[90%] bg-[#d9d9d9] rounded-3xl">
+        <div className={`bg-dominant h-[95vh] sm:h-[90%] w-[95vw] sm:w-[90%] flex flex-col lg:flex-row justify-center items-center rounded-2xl sm:rounded-3xl drop-shadow-[-10px_15px_15px] ${dancingScript.className} p-3 sm:p-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}>
+            {loading && (<Spinner />)}
+
+            {/* Image Section - Hidden on mobile, visible on large screens */}
+            <div className="hidden lg:block w-[50%] h-[90%] bg-[#d9d9d9] rounded-3xl">
                 <img
                     src="/Write.png"
                     alt="write"
@@ -67,13 +69,14 @@ const SignUpPage = () => {
                 />
             </div>
 
-            <div className="h-[90%] w-[50%] flex justify-center items-center flex-col gap-5">
-                <h1 className="text-4xl">Register</h1>
+            {/* Form Section */}
+            <div className="h-full w-full lg:h-[90%] lg:w-[50%] flex justify-center items-center flex-col gap-4 sm:gap-5 px-4 sm:px-0">
+                <h1 className="text-3xl sm:text-4xl mb-2 sm:mb-0">Register</h1>
 
                 <input
                     type="text"
                     placeholder="Enter Your Name..."
-                    className="p-2 w-[70%] h-[10%] rounded-md placeholder:text-[#959595] outline-none"
+                    className="p-3 sm:p-2 w-[90%] sm:w-[70%] h-12 sm:h-[10%] rounded-md placeholder:text-[#959595] outline-none text-base"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
@@ -81,16 +84,16 @@ const SignUpPage = () => {
                 <input
                     type="email"
                     placeholder="Enter Your Email..."
-                    className="p-2 w-[70%] h-[10%] rounded-md placeholder:text-[#959595] outline-none"
+                    className="p-3 sm:p-2 w-[90%] sm:w-[70%] h-12 sm:h-[10%] rounded-md placeholder:text-[#959595] outline-none text-base"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <div className="relative w-[70%] h-[10%]">
+                <div className="relative w-[90%] sm:w-[70%] h-12 sm:h-[10%]">
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Your Password..."
-                        className="p-2 w-full h-full rounded-md placeholder:text-[#959595] outline-none"
+                        className="p-3 sm:p-2 w-full h-full rounded-md placeholder:text-[#959595] outline-none text-base"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -104,23 +107,23 @@ const SignUpPage = () => {
                 </div>
 
                 <button
-                    className="w-[70%] bg-secondary rounded-full h-[10%] text-2xl outline-none hover:bg-[#ebad42]"
+                    className="w-[90%] sm:w-[70%] bg-secondary rounded-full h-12 sm:h-[10%] text-xl sm:text-2xl outline-none hover:bg-[#ebad42] transition-all duration-200"
                     onClick={handleRegister}
                 >
                     Register
                 </button>
 
-                <div className="flex justify-center items-center gap-2 w-full">
+                <div className="flex justify-center items-center gap-2 w-[90%] sm:w-full">
                     <hr className="h-[2px] w-[30%] bg-black" />
-                    <span>Or</span>
+                    <span className="text-sm sm:text-base">Or</span>
                     <hr className="h-[2px] w-[30%] bg-black" />
                 </div>
 
                 <button
-                    className="w-[70%] bg-secondary rounded-full h-[10%] text-2xl outline-none flex justify-center items-center gap-5 hover:bg-[#ebad42]"
+                    className="w-[90%] sm:w-[70%] bg-secondary rounded-full h-12 sm:h-[10%] text-lg sm:text-2xl outline-none flex justify-center items-center gap-3 sm:gap-5 hover:bg-[#ebad42] transition-all duration-200"
                     onClick={() => navigateWithSpinner("/auth/signin")}
                 >
-                    Already have an account? Login
+                    <span className="text-center">Already have an account? Login</span>
                 </button>
             </div>
         </div>

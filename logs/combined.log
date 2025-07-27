@@ -1257,3 +1257,4 @@
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:11:47"}
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:13:04"}
 {"level":"info","message":"Received a GET request from the endpoint: \"api/comment\"","timestamp":"2025-07-27 22:13:05"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 22:20:15"}
