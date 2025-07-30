@@ -1261,3 +1261,22 @@
 {"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-27 22:44:52"}
 {"level":"info","message":"Received a PUT request from the endpoint: \"api/user\"","timestamp":"2025-07-27 22:45:56"}
 {"level":"info","message":"User with email: ankitasubh@gmail.com updated successfully","timestamp":"2025-07-27 22:45:56"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-28 15:07:42"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-28 15:14:38"}
+{"level":"info","message":"Received a POST request from the endpoint: \"api/user\"","timestamp":"2025-07-29 01:58:21"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-29 01:58:22"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-29 01:58:23"}
+{"level":"info","message":"Created a new user successfully","timestamp":"2025-07-29 01:58:24"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-29 02:17:44"}
+{"level":"info","message":"Connected to Cloudinary","timestamp":"2025-07-29 02:18:13"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-29 02:22:32"}
+{"level":"info","message":"OTP sent to roysubhadeep757@gmail.com","timestamp":"2025-07-29 02:22:38"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-29 02:23:27"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-30 14:50:54"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-30 14:50:56"}
+{"level":"info","message":"OTP sent to roysubhadeep757@gmail.com","timestamp":"2025-07-30 14:51:01"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-30 14:52:30"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2025-07-30 17:09:22"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-30 17:21:35"}
+{"level":"info","message":"OTP sent to roysubhadeep757@gmail.com","timestamp":"2025-07-30 17:21:39"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-07-30 17:23:02"}

@@ -101,6 +101,10 @@ const SignInPage = () => {
                     </button>
                 </div>
 
+                <button onClick={()=>navigateWithSpinner("/reset-pass")} className="hover:text-blue-600 hover:underline">
+                    Forgot Password?
+                </button>
+
                 <button
                     className="w-[90%] sm:w-[70%] bg-secondary rounded-full h-12 sm:h-[10%] text-xl sm:text-2xl outline-none hover:bg-opacity-90 transition-all duration-200"
                     onClick={handleLogin}
