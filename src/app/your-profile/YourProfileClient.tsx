@@ -20,7 +20,6 @@ interface Props {
 }
 
 const YourProfileClient: React.FC<Props> = ({ name, email, profilePic, niche, bio }) => {
-    const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [updatedName, setUpdatedName] = useState(name);
     const [updatedNiche, setUpdatedNiche] = useState(niche);
@@ -150,7 +149,6 @@ const YourProfileClient: React.FC<Props> = ({ name, email, profilePic, niche, bi
                                     width={250} 
                                     height={250} 
                                     className="object-cover"
-                                    onLoad={() => setIsImageLoaded(true)}
                                 />
                             </motion.div>
                         </motion.div>

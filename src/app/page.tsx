@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/config/auth.config";
 import connectMongo from "@/lib/mongoose";
@@ -30,6 +29,6 @@ export default async function Home() {
     }
 
     return (
-        <AuthenticatedHome name={user.name} email={user.email} profilePic={user.profilePic} niche={user.niche} bio={user.bio}/>
+        <AuthenticatedHome profilePic={user.profilePic} niche={user.niche} bio={user.bio}/>
     );
 }

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Spinner from './Spinner';
-import Image from 'next/image';
 import { Dancing_Script } from 'next/font/google';
 import { Poppins } from 'next/font/google';
 import Navbar from './Navbar';
@@ -12,19 +11,12 @@ import { motion } from 'framer-motion';
 import { Clapperboard, Ellipsis, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 import Footer from './Footer';
 
-const dancingScript = Dancing_Script({
-    weight: "400",
-    subsets: ["latin"],
-});
-
 const poppins = Poppins({
     weight: "400",
     subsets: ["latin"],
 });
 
 interface Props {
-    name: string;
-    email: string;
     profilePic?: string;
     niche?: string;
     bio?: string;
@@ -61,7 +53,7 @@ const TrendingPostSkeleton = () => {
     );
 };
 
-const AuthenticatedHome: React.FC<Props> = ({ name, email, profilePic }) => {
+const AuthenticatedHome: React.FC<Props> = ({ profilePic }) => {
     const [loading, setLoading] = useState(false);
     const [trendingPosts, setTrendingPosts] = useState<TrendingPost[]>([]);
     const [loadingTrending, setLoadingTrending] = useState(false);

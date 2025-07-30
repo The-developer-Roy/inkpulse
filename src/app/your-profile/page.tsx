@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getServerSession } from "next-auth";
 import authOptions from "../config/auth.config";
 import connectMongo from "@/lib/mongoose";

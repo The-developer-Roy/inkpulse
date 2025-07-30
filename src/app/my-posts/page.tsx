@@ -23,6 +23,8 @@ const DraftsPage = () => {
     const [loading, setLoading] = useState(true);
     const { data: session, status } = useSession();
 
+    if(!session?.user.email) return;
+
     useEffect(() => {
         if (status !== 'authenticated') return;
 
@@ -51,9 +53,9 @@ const DraftsPage = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
-            <h1 className="text-3xl font-bold mb-6">📝 Your Posts</h1>
+            <h1 className="text-3xl font-bold mb-6">Your Posts</h1>
             {myPosts.length === 0 ? (
-                <p className="text-gray-600">You don't have any posts yet.</p>
+                <p className="text-gray-600">You don&apos;t have any posts yet.</p>
             ) : (
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {myPosts.map((post) => (

@@ -25,6 +25,7 @@ export const GET = async () => {
 
     return NextResponse.json(drafts);
   } catch (err) {
+    console.error(err);
     return NextResponse.json(
       { message: "Failed to fetch drafts" },
       { status: 500 }

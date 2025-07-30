@@ -40,13 +40,13 @@ const About = () => {
                 </p>
 
                 <p className={`text-xl font-bold ${playfairDisplay.className} p-10 flex justify-start items-center h-20 w-[100%] border-l-4 border-l-gray-700`}>
-                    "What if anyone with a story could share it with the world — freely, beautifully, and without barriers?"
+                    &quot;What if anyone with a story could share it with the world — freely, beautifully, and without barriers?&quot;
                 </p>
 
                 <p className='text-lg'>
                     Tired of traditional publishing gates and impersonal platforms, we set out to build something different — a creative ecosystem where writers are celebrated, readers are valued, and every story matters.
 
-                    Since our launch, we've grown into a dynamic global community — from young poets in Delhi to seasoned fantasy authors in London, from casual weekend readers to late-night binge writers.
+                    Since our launch, we&apos;ve grown into a dynamic global community — from young poets in Delhi to seasoned fantasy authors in London, from casual weekend readers to late-night binge writers.
                 </p>
             </section>
             <hr className='bg-gray-600 h-[2px] w-[100%] outline-none border-none' />
@@ -124,7 +124,7 @@ const About = () => {
             <section className='flex flex-col justify-center items-start gap-5'>
                 <h2 className='text-4xl font-bold'>💌 Want to Connect?</h2>
                 <p className='text-lg'>
-                    Have questions, feedback, or ideas? We'd love to hear from you.
+                    Have questions, feedback, or ideas? We&apos;d love to hear from you.
                 </p>
                 <ul>
                     <li>

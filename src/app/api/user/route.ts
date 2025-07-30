@@ -93,7 +93,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Return user details (excluding sensitive data like password)
-    const { password, ...userData } = user.toObject();
+    const { ...userData } = user.toObject();
     return NextResponse.json({
       message: "User fetched successfully",
       data: userData,
@@ -164,7 +164,7 @@ export async function PUT(req: NextRequest) {
     }
 
     // Exclude sensitive fields (e.g., password) from the response
-    const { password, ...userData } = updatedUser.toObject();
+    const { ...userData } = updatedUser.toObject();
 
     return NextResponse.json({
       message: "User updated successfully.",

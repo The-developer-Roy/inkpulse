@@ -6,7 +6,7 @@ import Spinner from "@/components/Spinner";
 import { Clapperboard, Heart, Sparkles, Swords, TestTubeDiagonal, VenetianMask } from 'lucide-react'
 
 
-const genres = () => {
+const Genres = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
@@ -45,4 +45,4 @@ const genres = () => {
     )
 }
 
-export default genres;
+export default Genres;

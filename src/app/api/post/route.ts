@@ -154,26 +154,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const cleanContent = sanitizeHtml(content, {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        "img",
-        "h1",
-        "h2",
-        "h3",
-        "u",
-        "s",
-      ]),
-      allowedAttributes: {
-        "*": ["href", "src", "alt", "title", "style"],
-      },
-      allowedSchemes: ["http", "https", "data"],
-      allowedStyles: {
-        "*": {
-          "text-align": [/^left$/, /^right$/, /^center$/, /^justify$/],
-        },
-      },
-    });
-
     // Create a new post and cast author to ObjectId
     const post = new Post({
       title,
@@ -266,26 +246,6 @@ export async function PUT(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    const cleanContent = sanitizeHtml(content, {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        "img",
-        "h1",
-        "h2",
-        "h3",
-        "u",
-        "s",
-      ]),
-      allowedAttributes: {
-        "*": ["href", "src", "alt", "title", "style"],
-      },
-      allowedSchemes: ["http", "https", "data"],
-      allowedStyles: {
-        "*": {
-          "text-align": [/^left$/, /^right$/, /^center$/, /^justify$/],
-        },
-      },
-    });
 
     // Find the post by ID and update it
     const updatedPost = await Post.findByIdAndUpdate(

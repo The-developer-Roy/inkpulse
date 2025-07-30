@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import { Dancing_Script } from 'next/font/google';
 import { Upload } from 'lucide-react';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -15,8 +14,7 @@ const dancingScript = Dancing_Script({
 
 const emojis = ["✨", "🎇", "🎆", "🎉", "🎊"];
 
-const setup_profile = () => {
-    const session = useSession();
+const Setup_profile = () => {
     const router = useRouter();
     const [wobble, setWobble] = useState(false);
     const [name, setName] = useState("");
@@ -151,4 +149,4 @@ const setup_profile = () => {
     )
 }
 
-export default setup_profile;
+export default Setup_profile;
