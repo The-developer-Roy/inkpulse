@@ -34,7 +34,7 @@ export default async function EditorPage({ searchParams }: PageProps) {
     }
 
     let postData = null;
-    const postId = typeof searchParams?.id==='string'?searchParams.id:undefined;
+    const postId = typeof searchParams?.id==="string"?searchParams.id:undefined;
 
     if (postId) {
         const post = await Post.findOne({ _id: searchParams?.id, author: session.user.id }).lean();
