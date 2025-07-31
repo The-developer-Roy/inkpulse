@@ -6,6 +6,10 @@ import EditorClient from "./EditorClient";
 import Post from "../models/Post";
 import { notFound } from "next/navigation";
 
+interface PageProps {
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
+
 interface UserProfile {
     name: string;
     email: string;
@@ -14,7 +18,7 @@ interface UserProfile {
     bio?: string;
 }
 
-export default async function EditorPage({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
+export default async function EditorPage({ searchParams }: PageProps) {
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
@@ -30,10 +34,11 @@ export default async function EditorPage({ searchParams }: { searchParams?: Reco
     }
 
     let postData = null;
-    const postId = typeof searchParams?.id==="string"?searchParams.id:undefined;
+    const resolvedSearchParams = searchParams ? await searchParams : {};
+    const postId=typeof resolvedSearchParams?.id==="string"?resolvedSearchParams.id:undefined;
 
     if (postId) {
-        const post = await Post.findOne({ _id: searchParams?.id, author: session.user.id }).lean();
+        const post = await Post.findOne({ _id: postId, author: session.user.id }).lean();
         if (!post) return notFound(); // 404 if not found or unauthorized
         postData = JSON.parse(JSON.stringify(post)); //make serializable
     }
