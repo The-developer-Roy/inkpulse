@@ -1,8 +1,19 @@
 // src/app/post/page.tsx
-import React from "react";
+import React, { Suspense } from "react";
 import connectMongo from '@/lib/mongoose';
 import Post from '@/app/models/Post';
 import AllPostsClient from "./AllPostClient";
+import Spinner from "@/components/Spinner";
+
+function PostsLoading() {
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-10 space-y-6">
+      <div className="flex justify-center items-center min-h-[200px]">
+        <Spinner />
+      </div>
+    </div>
+  );
+}
 
 export default async function AllPostsPage() {
   await connectMongo();
@@ -25,5 +36,9 @@ export default async function AllPostsPage() {
     },
   }));
 
-  return <AllPostsClient posts={posts}/>
+  return (
+    <Suspense fallback={<PostsLoading />}>
+      <AllPostsClient posts={posts} />
+    </Suspense>
+  )
 }
