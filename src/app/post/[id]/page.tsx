@@ -9,11 +9,11 @@ import authOptions from "@/app/config/auth.config";
 import LikeButton from "@/components/LikeButton";
 import CommentSection from "@/components/CommentSection";
 
-interface Params {
-  params: { id: string };
+interface PageProps {
+  params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   await connectMongo();
   const { id } = await params;
   const post = await Post.findById(id);
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function PostPage({ params }: Params) {
+export default async function PostPage({ params }: PageProps) {
   await connectMongo();
   const session = await getServerSession(authOptions);
   const { id } = await params;
