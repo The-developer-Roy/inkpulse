@@ -61,7 +61,7 @@ const authOptions: NextAuthOptions = {
             await connectMongo();
 
             // Only handle Google signup here
-            if (account?.provider === 'google') {
+            if (account?.provider === "google") {
                 const existingUser = await User.findOne({ email: profile?.email });
 
                 if (existingUser) {
