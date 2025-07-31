@@ -29,7 +29,7 @@ const SignUpPage = () => {
         setLoading(true);
 
         try {
-            const res = await fetch("http://localhost:3000/api/user", {
+            const res = await fetch("https://inkpulse-eight.vercel.app/api/user", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, password }),
