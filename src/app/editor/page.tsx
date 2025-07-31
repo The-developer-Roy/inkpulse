@@ -6,10 +6,6 @@ import EditorClient from "./EditorClient";
 import Post from "../models/Post";
 import { notFound } from "next/navigation";
 
-interface PageProps{
-    searchParams?: { [key: string]: string | string[] | undefined };
-}
-
 interface UserProfile {
     name: string;
     email: string;
@@ -18,7 +14,7 @@ interface UserProfile {
     bio?: string;
 }
 
-export default async function EditorPage({ searchParams }: PageProps) {
+export default async function EditorPage({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
